@@ -6,7 +6,7 @@
 <title>Pumpkin Craft — the server</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --void:#101219; --panel:#181b24; --panel-2:#1f2330; --line:#2b3040;
@@ -15,7 +15,7 @@
     --wart:#c0392b; --jail:#8e44ad; --boss:#b06be0;
     --danger:#e5654b; --ok:#4fb477; --gold:#e6b34d;
     --shadow:0 18px 50px -20px rgba(0,0,0,.7);
-    --disp:'Space Grotesk',system-ui,sans-serif;
+    --disp:'Dongle',system-ui,sans-serif;
     --body:'Inter',system-ui,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
   }
@@ -44,7 +44,7 @@
   .cube i::after{content:"";position:absolute;top:-7px;left:5px;width:100%;height:100%;
      border:2px solid rgba(239,143,60,.4);border-bottom:none;border-left:none;
      clip-path:polygon(0 0,100% 0,100% 100%);opacity:.6}
-  .brandmark b{font-family:var(--disp);font-weight:700;letter-spacing:.5px;font-size:1.02rem}
+  .brandmark b{font-family:var(--disp);font-weight:700;letter-spacing:.5px;font-size:1.2rem}
   .toc a{display:block;color:var(--muted);font-size:.9rem;padding:7px 0 7px 14px;
      border-left:2px solid transparent;font-weight:500}
   .toc a:hover{color:var(--ink);text-decoration:none;border-left-color:var(--line)}
@@ -55,10 +55,64 @@
   .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
      color:var(--pumpkin);display:flex;gap:10px;align-items:center;margin-bottom:18px}
   .eyebrow::before{content:"";width:26px;height:2px;background:var(--pumpkin)}
-  h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.5rem,6vw,4.1rem);line-height:.98;
-     margin:0 0 16px;letter-spacing:-1px}
-  h1 span{color:var(--pumpkin)}
-  .lead{font-size:1.12rem;color:var(--muted);max-width:56ch;margin:0 0 24px}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(3.4rem,8vw,5.8rem);line-height:.95;
+     margin:0 0 20px;letter-spacing:-1px;color:var(--pumpkin)}
+  .lead{font-size:1.12rem;color:var(--muted);max-width:56ch;margin:0 0 10px}
+  .lead-block{margin:0 0 22px}
+  .lead-block .lead{margin:0 0 8px}
+
+  .slideshow{position:relative;width:100%;max-width:640px;aspect-ratio:16/9;
+     background:var(--panel);border:1px solid var(--line);overflow:hidden;margin:6px 0 26px}
+  .slideshow .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;
+     display:flex;align-items:center;justify-content:center}
+  .slideshow .slide.active{opacity:1}
+  .slideshow .slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .slideshow .slide.placeholder{color:var(--faint);font-family:var(--mono);font-size:.78rem;
+     letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:20px}
+  .slideshow .dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px}
+  .slideshow .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);
+     border:none;padding:0;cursor:pointer}
+  .slideshow .dot.active{background:var(--pumpkin)}
+  .slideshow .arrow{position:absolute;top:0;bottom:0;width:44px;display:flex;align-items:center;
+     justify-content:center;background:transparent;border:none;color:var(--ink);cursor:pointer;
+     font-family:var(--mono);font-size:1.3rem;opacity:0;transition:opacity .15s}
+  .slideshow:hover .arrow{opacity:.7}
+  .slideshow .arrow:hover{opacity:1}
+  .slideshow .arrow.prev{left:0}
+  .slideshow .arrow.next{right:0}
+
+  /* text-card slideshow variant (ranks) */
+  .slideshow.text{aspect-ratio:auto;min-height:300px;max-width:100%}
+  .slideshow.text .slide{align-items:stretch;justify-content:flex-start;padding:26px 54px 46px}
+  .slideshow.text .slide:not(.active){pointer-events:none}
+  .slideshow.text .arrow{opacity:.5}
+  .slideshow.text:hover .arrow{opacity:.75}
+  .slideshow.text .arrow:hover{opacity:1}
+  .slide-card{width:100%}
+  .slide-card .rank-n{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;
+     text-transform:uppercase;color:var(--faint)}
+  .slide-card h4{font-family:var(--disp);font-size:1.9rem;margin:4px 0 2px;color:var(--pumpkin)}
+  .slide-card .expiry{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+     text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .slide-card ul{margin:0 0 14px;padding-left:18px;color:var(--muted);font-size:.95rem}
+  .slide-card ul li{margin-bottom:4px}
+  .slide-card ul li.cant{color:var(--faint)}
+  .slide-card .eg{border-left:2px solid var(--line);padding-left:12px;color:var(--muted);
+     font-size:.92rem;margin:0}
+  .slide-card .eg b{color:var(--ink);font-weight:600}
+
+  /* single-rule headline */
+  .rule-headline{background:var(--panel);border:1px solid var(--line);
+     border-left:3px solid var(--danger);padding:22px 24px;margin:0 0 1px}
+  .rule-headline .n{font-family:var(--mono);color:var(--danger);font-size:.72rem;
+     letter-spacing:.16em;text-transform:uppercase}
+  .rule-headline h4{font-family:var(--disp);margin:6px 0 0;font-size:2rem}
+
+  /* inline screenshot */
+  .shot{margin:18px 0 0;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+  .shot img{display:block;width:100%;height:auto}
+  .shot figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+     text-transform:uppercase;color:var(--faint);padding:10px 14px;border-top:1px solid var(--line)}
 
   .join{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
      border:1px solid var(--line);margin:0 0 20px;max-width:560px}
@@ -77,9 +131,9 @@
   section{padding:46px 0;border-bottom:1px solid var(--line)}
   .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
   .sec-n{font-family:var(--mono);font-size:.78rem;color:var(--pumpkin);letter-spacing:.1em}
-  h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);margin:0;letter-spacing:-.4px}
+  h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,3.4vw,2.2rem);margin:0;letter-spacing:-.4px}
   .sec-sub{color:var(--muted);max-width:66ch;margin:6px 0 26px}
-  h3{font-family:var(--disp);font-weight:600;font-size:1.08rem;margin:28px 0 10px}
+  h3{font-family:var(--disp);font-weight:600;font-size:1.2rem;margin:28px 0 10px}
   p{margin:0 0 14px}
   .muted{color:var(--muted)}
   .soon{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
@@ -88,7 +142,7 @@
   .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .rule{background:var(--panel);padding:24px 22px}
   .rule .n{font-family:var(--mono);color:var(--danger);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
-  .rule h4{font-family:var(--disp);margin:8px 0 6px;font-size:1.3rem}
+  .rule h4{font-family:var(--disp);margin:8px 0 6px;font-size:1.5rem}
   .rule p{color:var(--muted);font-size:.92rem;margin:0}
 
   .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -96,14 +150,14 @@
   .steps.q3{grid-template-columns:repeat(3,1fr)}
   .step{background:var(--panel);padding:20px 18px}
   .step .k{font-family:var(--mono);color:var(--pumpkin);font-size:.88rem;font-weight:700}
-  .step h4{font-family:var(--disp);margin:8px 0 6px;font-size:1.02rem}
+  .step h4{font-family:var(--disp);margin:8px 0 6px;font-size:1.2rem}
   .step p{color:var(--muted);font-size:.9rem;margin:0}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
   .cards.two{grid-template-columns:repeat(2,1fr)}
   .card{background:var(--panel);border:1px solid var(--line);padding:19px}
   .card .ico{font-family:var(--mono);font-size:.68rem;color:var(--faint);letter-spacing:.15em;text-transform:uppercase}
-  .card h4{font-family:var(--disp);margin:9px 0 8px;font-size:1.02rem}
+  .card h4{font-family:var(--disp);margin:9px 0 8px;font-size:1.2rem}
   .card p{color:var(--muted);font-size:.89rem;margin:0}
 
   .tbl{width:100%;border-collapse:collapse;font-size:.9rem;border:1px solid var(--line);background:var(--panel)}
@@ -133,7 +187,7 @@
   .strip{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin:18px 0}
   .strip .cell{background:var(--panel);padding:15px 17px;flex:1;min-width:130px}
   .strip .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-  .strip .big{font-family:var(--disp);font-weight:700;font-size:1.45rem;margin-top:6px}
+  .strip .big{font-family:var(--disp);font-weight:700;font-size:1.6rem;margin-top:6px}
   .strip small{color:var(--muted);font-size:.8rem}
 
   footer{padding:36px 0 60px;color:var(--faint);font-size:.82rem;font-family:var(--mono)}
@@ -170,11 +224,32 @@
 
     <header class="hero" id="top">
       <div class="eyebrow">Java &amp; Bedrock · survival · custom economy</div>
-      <h1><span>Pumpkins</span> make the world go round.</h1>
-      <p class="lead">A survival island divided into cubic chunks that players can claim to protect from others. Claims charge you daily based on the size, and height.</p>
-      <p class="lead">Grow pumpkins to increase your wealth, and sustain your claims.</p>
-      <p class="lead">All players have the power to see who broke, placed, or opened any block, chest, or door. So you know who your enimies are.</p>
-      <p class="lead">All players also have the power to banish others to the nether for a long time.</p>
+      <h1>Pumpkin Island</h1>
+
+      <div class="lead-block">
+        <p class="lead">A survival island divided into cubic chunks that players can claim to protect from others. Claims charge you daily based on the size, and height.</p>
+      </div>
+
+      <div class="slideshow" id="heroSlideshow">
+        <div class="slide active"><img src="images/piimg1.png" alt=""></div>
+        <div class="slide"><img src="images/piimg2.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg3.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg4.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg5.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg6.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg7.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg8.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/piimg9.png" alt="" loading="lazy"></div>
+        <button class="arrow prev" aria-label="Previous slide">‹</button>
+        <button class="arrow next" aria-label="Next slide">›</button>
+        <div class="dots"></div>
+      </div>
+
+      <div class="lead-block">
+        <p class="lead">Grow pumpkins to increase your wealth, and sustain your claims.</p>
+        <p class="lead">All players have the power to see who broke, placed, or opened any block, chest, or door. So you know who your enimies are.</p>
+        <p class="lead">All players also have the power to banish others to the nether for a long time.</p>
+      </div>
 
       <div class="join">
         <div class="cell">
@@ -204,16 +279,22 @@
     <!-- RULES -->
     <section id="rules">
       <div class="sec-h"><span class="sec-n">01</span><h2>Rules</h2></div>
+      <div class="rule-headline">
+        <div class="n">Rule 01</div>
+        <h4>No Cheating</h4>
+      </div>
       <div class="rules">
-        <div class="rule"><div class="n">01</div><h4>No Hacking</h4></div>
-        <div class="rule"><div class="n">02</div><h4>No Exploiting</h4></div>
+        <div class="rule"><div class="n">This includes</div><h4>Modding</h4>
+          <p>Downloading additional addons to your game to gain an unfair advantage.</p></div>
+        <div class="rule"><div class="n">This includes</div><h4>Exploiting</h4>
+          <p>Abusing bugs, enderpearling through walls, etc.</p></div>
       </div>
     </section>
 
     <!-- CLAIMS -->
     <section id="claims">
       <div class="sec-h"><span class="sec-n">02</span><h2>Claims &amp; Rent</h2></div>
-      <p class="sec-sub">The world is a grid of 16×16×16 cubes. Claim the one you're standing in, anchor it with a barrel, and keep that barrel stocked — rent comes out of it every day.</p>
+      <p class="sec-sub">The world is a grid of 16×16×16 cubes. Claim the one you're standing in, anchor it with a barrel, and keep that barrel stocked.</p>
 
       <div class="steps q4">
         <div class="step"><h4>Claim</h4>
@@ -225,6 +306,11 @@
         <div class="step"><h4>Feed it</h4>
           <p>Drop pumpkins in the barrel. Rent is taken daily at <b>00:00 GMT</b>. Run dry and the debt builds.</p></div>
       </div>
+
+      <figure class="shot">
+        <img src="images/claimdisplay.png" alt="The /claim display in game, showing bases, rent and debt" loading="lazy">
+        <figcaption>What <code>/claim</code> shows you in game</figcaption>
+      </figure>
 
       <h3>Overworld — per cubic chunk, per day</h3>
       <table class="tbl">
@@ -243,8 +329,8 @@
         <thead><tr><th>Where</th><th>Cost</th></tr></thead>
         <tbody>
           <tr><td>Outside the jail</td><td><b>16</b> warts</td></tr>
-          <tr><td>Inside the jail — non-banished player</td><td><b>32</b> warts <span class="muted">(2×)</span></td></tr>
-          <tr><td>Inside the jail — banished player</td><td><b>16</b> warts</td></tr>
+          <tr><td>Inside the jail — non-banished player</td><td><b>16</b> warts</td></tr>
+          <tr><td>Inside the jail — banished player</td><td><b>8</b> warts <span class="muted">(half)</span></td></tr>
         </tbody>
       </table>
 
@@ -261,17 +347,72 @@
 
     <!-- ROLES -->
     <section id="roles">
-      <div class="sec-h"><span class="sec-n">03</span><h2>Who Can Touch What?</h2></div>
-      <p class="sec-sub">Every base has its own list of people. You start as Trusted on the base you found; add others with <code class="inline">/claim trust</code>.</p>
-      <table class="tbl matrix">
-        <thead><tr><th>Can they…</th><th>Visitor</th><th>PermVisitor</th><th>Member</th><th>Trusted</th></tr></thead>
-        <tbody>
-          <tr><td>Interact with doors, buttons, minecarts, boats, etc</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Build &amp; open chests</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Open the rent barrel, manage the roster, unclaim</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-        </tbody>
-      </table>
-      <p class="muted" style="margin-top:12px;font-size:.9rem">Visitor lasts 24 hours; PermVisitor never expires. Everyone else can walk through your base but not touch a thing.</p>
+      <div class="sec-h"><span class="sec-n">03</span><h2>Ranks inside of Claims</h2></div>
+      <p class="sec-sub">Every base has its own list of people. You start as Trusted on the base you found; add others with <code class="inline">/claim trust</code>. Anyone not on the list can walk through your base but not touch a thing.</p>
+
+      <div class="slideshow text" data-autoplay="off">
+        <div class="slide active">
+          <div class="slide-card">
+            <div class="rank-n">Rank 01</div>
+            <h4>Visitor</h4>
+            <div class="expiry">Expires after 24 hours</div>
+            <ul>
+              <li>Open doors and gates, press buttons and levers</li>
+              <li>Use boats and minecarts</li>
+              <li class="cant">Can't build, break, or open chests</li>
+            </ul>
+            <p class="eg"><b>Use it for</b> someone popping over to buy from your shop or look round your build — access that cleans itself up the next day, so you never have to remember to revoke it.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-card">
+            <div class="rank-n">Rank 02</div>
+            <h4>PermVisitor</h4>
+            <div class="expiry">Never expires</div>
+            <ul>
+              <li>Open doors and gates, press buttons and levers</li>
+              <li>Use boats and minecarts</li>
+              <li class="cant">Can't build, break, or open chests</li>
+            </ul>
+            <p class="eg"><b>Use it for</b> a neighbour who comes and goes, or anyone with a standing invitation. Same access as a Visitor, set once and left alone.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-card">
+            <div class="rank-n">Rank 03</div>
+            <h4>Member</h4>
+            <div class="expiry">Never expires</div>
+            <ul>
+              <li>Everything a Visitor can do</li>
+              <li>Build and break blocks</li>
+              <li>Open chests and storage</li>
+              <li class="cant">Can't touch the rent barrel, the member list, or unclaim</li>
+            </ul>
+            <p class="eg"><b>Use it for</b> a friend building the place with you. They can work on the base and use the supplies, but they can't give the base away or empty the rent.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-card">
+            <div class="rank-n">Rank 04</div>
+            <h4>Trusted</h4>
+            <div class="expiry">Full control</div>
+            <ul>
+              <li>Everything a Member can do</li>
+              <li>Open the rent barrel</li>
+              <li>Add, promote and remove other members</li>
+              <li>Rename the base and unclaim cubes</li>
+            </ul>
+            <p class="eg"><b>Use it for</b> a genuine co-owner. A Trusted player can take the rent, remove you, and unclaim the whole base — only hand it to someone you'd trust with all of it.</p>
+          </div>
+        </div>
+
+        <button class="arrow prev" aria-label="Previous rank">‹</button>
+        <button class="arrow next" aria-label="Next rank">›</button>
+        <div class="dots"></div>
+      </div>
       <div class="callout warn"><span class="tag">Watch out</span>
         <p>Anyone can still place water buckets, trample your crops, or build directly above your base — plan your builds with that in mind.</p></div>
     </section>
@@ -328,15 +469,22 @@
 
     <!-- BOSSES -->
     <section id="bosses">
-      <div class="sec-h"><span class="sec-n">07</span><h2>Boss arena</h2><span class="soon">Coming soon</span></div>
-      <p class="sec-sub">Altars on the End island will let anyone summon a boss for pumpkins. No queue, no cap, PvP still on — and whoever lands the kill spins a wheel for the prize.</p>
+      <div class="sec-h"><span class="sec-n">07</span><h2>Boss arena</h2></div>
+      <p class="sec-sub">Altars on the End island let anyone summon a boss for pumpkins. No queue, no cap, PvP still on — and whoever lands the kill spins a wheel for the prize.</p>
       <div class="steps q3">
         <div class="step"><div class="k">01</div><h4>Pay</h4></div>
         <div class="step"><div class="k">02</div><h4>Fight</h4></div>
         <div class="step"><div class="k">03</div><h4>Reward</h4></div>
       </div>
-      <div class="callout"><span class="tag">Status</span>
-        <p>The arena is built and the wither and warden work. The dragon is being fixed — watch Discord for the opening.</p></div>
+
+      <div class="slideshow" style="margin-top:18px">
+        <div class="slide active"><img src="images/baimg1.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/baimg2.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="images/baimg3.png" alt="" loading="lazy"></div>
+        <button class="arrow prev" aria-label="Previous image">‹</button>
+        <button class="arrow next" aria-label="Next image">›</button>
+        <div class="dots"></div>
+      </div>
     </section>
 
     <!-- COMMANDS -->
@@ -405,5 +553,49 @@
 
   </main>
 </div>
+<script>
+document.querySelectorAll('.slideshow').forEach(function(box){
+  const slides = Array.from(box.querySelectorAll('.slide'));
+  const dotsWrap = box.querySelector('.dots');
+  if(slides.length < 2 || !dotsWrap) return;
+
+  const autoplay = box.dataset.autoplay !== 'off';
+  const delay = parseInt(box.dataset.interval, 10) || 5000;
+  let i = Math.max(0, slides.findIndex(s => s.classList.contains('active')));
+  let timer;
+
+  slides.forEach(function(_, idx){
+    const d = document.createElement('button');
+    d.className = 'dot' + (idx === i ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+    d.addEventListener('click', function(){ go(idx); });
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+
+  function go(idx){
+    slides[i].classList.remove('active');
+    dots[i].classList.remove('active');
+    i = (idx + slides.length) % slides.length;
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+    restart();
+  }
+  function restart(){
+    clearInterval(timer);
+    if(!autoplay) return;
+    timer = setInterval(function(){ go(i + 1); }, delay);
+  }
+
+  box.querySelector('.arrow.prev').addEventListener('click', function(){ go(i - 1); });
+  box.querySelector('.arrow.next').addEventListener('click', function(){ go(i + 1); });
+
+  // pause while hovered, so nobody loses their place mid-read
+  box.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  box.addEventListener('mouseleave', restart);
+
+  restart();
+});
+</script>
 </body>
 </html>
