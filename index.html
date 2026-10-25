@@ -211,11 +211,12 @@
       <a href="#top">Intro</a>
       <a href="#rules">Rules</a>
       <a href="#claims">Claims &amp; Rent</a>
-      <a href="#roles">Who Can Touch What?</a>
-      <a href="#jail">Nether jail</a>
+      <a href="#roles">Ranks</a>
+      <a href="#drowning">Drowning</a>
       <a href="#seeds">Seeds</a>
       <a href="#shops">Shops</a>
       <a href="#bosses">Bosses</a>
+      <a href="#raids">Raid sites</a>
       <a href="#commands">Commands</a>
     </div>
   </nav>
@@ -248,7 +249,7 @@
       <div class="lead-block">
         <p class="lead">Grow pumpkins to increase your wealth, and sustain your claims.</p>
         <p class="lead">All players have the power to see who broke, placed, or opened any block, chest, or door. So you know who your enimies are.</p>
-        <p class="lead">All players also have the power to banish others to the nether for a long time.</p>
+        <p class="lead">All players also have the power to drown others — cursing them to breathe water, never to walk on land again until they buy their way out.</p>
       </div>
 
       <div class="join">
@@ -291,6 +292,7 @@
       </div>
     </section>
 
+
     <!-- CLAIMS -->
     <section id="claims">
       <div class="sec-h"><span class="sec-n">02</span><h2>Claims &amp; Rent</h2></div>
@@ -298,14 +300,17 @@
 
       <div class="steps q4">
         <div class="step"><h4>Claim</h4>
-          <p>Stand where you want to live and run <code class="inline">/claim</code>. You get a Claim Barrel and a 60-second preview of the borders.</p></div>
+          <p>Stand where you want to live and run <code class="inline">/claim here</code>. You get a Claim Barrel and a 60-second outline of the borders.</p></div>
         <div class="step"><h4>Anchor</h4>
           <p>Place the barrel. Your base is created and you name it in chat. That barrel is now your rent barrel — protected, hopper-proof.</p></div>
         <div class="step"><h4>Extend</h4>
-          <p><code class="inline">/claim</code> again in any touching cube — including above and below — to grow the base. One barrel covers all of it.</p></div>
+          <p><code class="inline">/claim here</code> again in any touching cube — including above and below — to grow the base. One barrel covers all of it.</p></div>
         <div class="step"><h4>Feed it</h4>
           <p>Drop pumpkins in the barrel. Rent is taken daily at <b>00:00 GMT</b>. Run dry and the debt builds.</p></div>
       </div>
+
+      <div class="callout"><span class="tag">Note</span>
+        <p><code class="inline">/claim</code> on its own opens the claims menu — your bases, rent, members and settings. It's <code class="inline">/claim here</code> that actually claims the cube you're standing in.</p></div>
 
       <figure class="shot">
         <img src="claimdisplay.png" alt="The /claim display in game, showing bases, rent and debt" loading="lazy">
@@ -322,17 +327,16 @@
           <tr><td>Deepslate <code>-64 → 0</code></td><td><b>1</b> pumpkin</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size:.9rem;margin-top:12px">Building high is expensive on purpose. A modest underground base costs almost nothing; a sky palace costs real farming.</p>
+      <p class="muted" style="font-size:.9rem;margin-top:12px">Building high is expensive on purpose. A sky palace costs six times what the same base costs down in the deepslate. The price is set by the bottom of each cube, so a tower pays more for every layer it climbs.</p>
 
       <h3>Nether — per cubic chunk, per day</h3>
       <table class="tbl">
         <thead><tr><th>Where</th><th>Cost</th></tr></thead>
         <tbody>
-          <tr><td>Outside the jail</td><td><b>16</b> warts</td></tr>
-          <tr><td>Inside the jail — non-banished player</td><td><b>16</b> warts</td></tr>
-          <tr><td>Inside the jail — banished player</td><td><b>8</b> warts <span class="muted">(half)</span></td></tr>
+          <tr><td>Anywhere in the Nether</td><td><b>32</b> nether warts</td></tr>
         </tbody>
       </table>
+      <p class="muted" style="font-size:.9rem;margin-top:12px">The Nether charges in nether warts, not pumpkins — a separate farm for a separate rent.</p>
 
       <h3>The End</h3>
       <table class="tbl">
@@ -417,44 +421,45 @@
         <p>Anyone can still place water buckets, trample your crops, or build directly above your base — plan your builds with that in mind.</p></div>
     </section>
 
-    <!-- JAIL -->
-    <section id="jail">
-      <div class="sec-h"><span class="sec-n">04</span><h2>The Nether jail</h2></div>
-      <p class="sec-sub">A 512×512 prison filling one quarter of the Nether. Anyone who can pay can send anyone there. No immunity, no appeals, no staff to complain to.</p>
+    <!-- DROWNING -->
+    <section id="drowning">
+      <div class="sec-h"><span class="sec-n">04</span><h2>Drowning</h2></div>
+      <p class="sec-sub">This server is player enforced, the drowning feature is a way to exile the bad players and keep them off of the island.</p>
 
-      <div class="cards">
-        <div class="card"><div class="ico">Send someone</div><h4>/banish &lt;player&gt;</h4>
-          <p>Costs you <b>640 pumpkins</b>. They keep their inventory, land in the jail, and get 32 soul sand and a nether wart to start their farm.</p></div>
-        <div class="card"><div class="ico">Buy your way out</div><h4>/buyout</h4>
-          <p>Hold <b>576 nether wart blocks</b> — nine stacks — and run it. They're consumed and you're free, teleported back to your bed.</p></div>
-        <div class="card"><div class="ico">Go voluntarily</div><h4>/selfbanish</h4>
-          <p>Jail yourself for free. No grace period though, so it won't save you from overworld rent.</p></div>
+      <div class="cards two">
+        <div class="card"><div class="ico">Take someone's air</div><h4>/drown &lt;player&gt;</h4>
+          <p>Costs you <b>640 pumpkins</b>. They keep their inventory, surface somewhere deep and cold, and get one mangrove propagule, two sea lanterns and a furnace to start with.</p></div>
+        <div class="card"><div class="ico">Buy your lungs back</div><h4>/buyout</h4>
+          <p>Hold <b>1024 dried kelp blocks</b> — sixteen stacks — and run it. They're consumed and you're free, returned to your bed.</p></div>
       </div>
 
-      <h3>Life inside</h3>
+      <h3>Life underwater</h3>
       <div class="steps">
-        <div class="step"><div class="k">▚</div><h4>You can't leave</h4>
-          <p>No walking, teleporting, pearling or portalling out. A particle wall marks the edge. Dying respawns you inside.</p></div>
+        <div class="step"><div class="k">≋</div><h4>Air kills you</h4>
+          <p>Surface and your bubble bar drains the wrong way. Empty it and you start taking damage. You can swim anywhere wet on the map — ocean, river, someone's pond — but you cannot set foot on dry land.</p></div>
         <div class="step"><div class="k">▤</div><h4>Your own chat</h4>
-          <p>You lose global chat. Everything you say goes to <b>[Jail]</b> — read only by other prisoners and anyone standing in the zone.</p></div>
-        <div class="step"><div class="k">◱</div><h4>Farm your freedom</h4>
-          <p>You can claim land inside the jail, paid in warts. Build a wart farm and grind out your buyout.</p></div>
+          <p>You lose global chat. Everything you say goes to <b>[Drowned]</b>, heard by anyone standing in water anywhere in the world. Step into a pond and you can talk back.</p></div>
+        <div class="step"><div class="k">✦</div><h4>Grow your way out</h4>
+          <p>The propagule becomes a mangrove, the mangrove becomes fuel, the fuel smelts kelp. Mangrove leaves drop more propagules, so it feeds itself. Then it's just 1024 blocks of patience.</p></div>
         <div class="step"><div class="k">❄</div><h4>Home is safe — briefly</h4>
-          <p>Your overworld bases freeze for <b>7 days</b>: no rent, no debt, no deletion. After that the clock restarts whether you're out or not.</p></div>
+          <p>Your overworld bases freeze for <b>7 days</b>: no rent, no debt, no deletion. After that the clock restarts whether you're breathing air again or not.</p></div>
       </div>
+
+      <div class="callout warn"><span class="tag">No way round it</span>
+        <p>Portals are closed to you, boats put your head in the air, and an air pocket you dig yourself will kill you just as fast as the beach will. Dying puts you back in the water.</p></div>
     </section>
 
     <!-- SEEDS -->
     <section id="seeds">
-      <div class="sec-h"><span class="sec-n">05</span><h2>Seeds are the bottleneck</h2></div>
-      <p class="sec-sub">Pumpkin seeds have no other source. Not crafting, not shearing, not traders. <code class="inline">/seed</code> is the only way — and every seed you buy makes the next one dearer.</p>
+      <div class="sec-h"><span class="sec-n">05</span><h2>Seeds</h2></div>
+      <p class="sec-sub">Pumpkin seeds have no other source. Not crafting, not shearing, not traders — the vanilla recipe is switched off and the wandering trader won't sell them. <code class="inline">/seed</code> is the only way, and every seed you buy makes the next one dearer.</p>
       <div class="strip">
         <div class="cell"><div class="lbl">Seed 1</div><div class="big">16</div><small>pumpkins</small></div>
-        <div class="cell"><div class="lbl">Seed 10</div><div class="big">56</div><small>pumpkins</small></div>
-        <div class="cell"><div class="lbl">Seed 20</div><div class="big">228</div><small>pumpkins</small></div>
-        <div class="cell"><div class="lbl">Seed 30</div><div class="big">921</div><small>pumpkins</small></div>
+        <div class="cell"><div class="lbl">Seed 3</div><div class="big">24</div><small>pumpkins</small></div>
+        <div class="cell"><div class="lbl">Seed 6</div><div class="big">40</div><small>pumpkins</small></div>
+        <div class="cell"><div class="lbl">Seed 10</div><div class="big">84</div><small>pumpkins</small></div>
       </div>
-      <p class="muted" style="font-size:.9rem">The price climbs 15% per seed, and it's tracked per player — your ladder is yours alone. Breaking a stem gives exactly one seed back, so a farm sustains itself but never multiplies for free.</p>
+      <p class="muted" style="font-size:.9rem">The full ladder runs 16, 20, 24, 28, 36, 40, 48, 60, 68, 84 — and it's tracked per player, so your prices are yours alone. Breaking a stem gives exactly one seed back, so a farm sustains itself but never multiplies for free.</p>
     </section>
 
     <!-- SHOPS -->
@@ -463,18 +468,21 @@
       <p class="sec-sub">No virtual balance, no <code class="inline">/pay</code>. Money is pumpkins you can hold, and trade happens face to face.</p>
       <div class="card" style="max-width:520px">
         <div class="ico">Player shops</div><h4>Sell from a chest</h4>
-        <p>Hold what you're selling, look at a chest or barrel, and run <code class="inline">/shop create</code>. Set your price in the menu that opens, then buyers right-click it: their pumpkins go in, one item comes out. Restock it and collect your takings whenever.</p>
+        <p>Hold what you're selling, look at a chest or barrel, and run <code class="inline">/shop create &lt;price&gt;</code>. Buyers right-click it: their pumpkins go in, one item comes out. Restock it and collect your takings whenever — and only you can see what it's earned.</p>
       </div>
     </section>
 
     <!-- BOSSES -->
     <section id="bosses">
       <div class="sec-h"><span class="sec-n">07</span><h2>Boss arena</h2></div>
-      <p class="sec-sub">Altars on the End island let anyone summon a boss for pumpkins. No queue, no cap, PvP still on — and whoever lands the kill spins a wheel for the prize.</p>
+      <p class="sec-sub">Altars let anyone summon a boss for pumpkins. No queue, no cap, PvP still on — thirty seconds between paying and the thing arriving, and whoever lands the kill spins a wheel for the prize.</p>
       <div class="steps q3">
-        <div class="step"><div class="k">01</div><h4>Pay</h4></div>
-        <div class="step"><div class="k">02</div><h4>Fight</h4></div>
-        <div class="step"><div class="k">03</div><h4>Reward</h4></div>
+        <div class="step"><div class="k">01</div><h4>Pay</h4>
+          <p>Ender Dragon <b>512</b> · Warden <b>448</b> · Wither <b>384</b> pumpkins, taken from your inventory at the altar.</p></div>
+        <div class="step"><div class="k">02</div><h4>Fight</h4>
+          <p>Thirty seconds' warning, announced to the whole server. Everyone knows. Everyone can come.</p></div>
+        <div class="step"><div class="k">03</div><h4>Reward</h4>
+          <p>The killing blow spins the wheel. Not the summoner, not the group — whoever lands it.</p></div>
       </div>
 
       <div class="slideshow" style="margin-top:18px">
@@ -487,18 +495,49 @@
       </div>
     </section>
 
+    <!-- RAID SITES -->
+    <section id="raids">
+      <div class="sec-h"><span class="sec-n">08</span><h2>Raid sites</h2></div>
+      <p class="sec-sub">Bastions and fortresses at fixed spots in the Nether, rebuilt from scratch every <b>Sunday at 06:00 GMT</b>. Fresh structure, fresh chests, same place.</p>
+
+      <div class="slideshow" style="margin:0 0 18px">
+        <div class="slide active"><img src="rsimg1.png" alt="" loading="lazy"></div>
+        <div class="slide"><img src="rsimg2.png" alt="" loading="lazy"></div>
+        <button class="arrow prev" aria-label="Previous image">‹</button>
+        <button class="arrow next" aria-label="Next image">›</button>
+        <div class="dots"></div>
+      </div>
+
+      <div class="steps q3">
+        <div class="step"><div class="k">01</div><h4>They reset weekly</h4>
+          <p>Whatever happened to a site during the week — looted, dismantled, burned down — Sunday morning puts a new one there.</p></div>
+        <div class="step"><div class="k">02</div><h4>First there wins</h4>
+          <p>No instancing, no per-player loot. One set of chests, and whoever reaches them first has them.</p></div>
+        <div class="step"><div class="k">03</div><h4>Still the Nether</h4>
+          <p>Piglins, blazes and wither skeletons come with the architecture. Bring gold.</p></div>
+      </div>
+
+    </section>
+
     <!-- COMMANDS -->
     <section id="commands" style="border-bottom:none">
-      <div class="sec-h"><span class="sec-n">08</span><h2>Every command you need</h2></div>
+      <div class="sec-h"><span class="sec-n">09</span><h2>Every command you need</h2></div>
 
       <h3>Claims</h3>
       <table class="tbl">
         <thead><tr><th>Command</th><th>What it does</th></tr></thead>
         <tbody>
-          <tr><td><code>/claim</code></td><td>Claim the cube you're in — or, if you already own it, see your bases, rent and debt</td></tr>
+          <tr><td><code>/claim</code></td><td>Open the claims menu — your bases, rent, debt, members and settings</td></tr>
+          <tr><td><code>/claim here</code></td><td>Claim the cube you're standing in, or extend your base into it</td></tr>
+          <tr><td><code>/claim info</code></td><td>Details of the claim you're standing in</td></tr>
+          <tr><td><code>/claim name</code></td><td>Rename your base</td></tr>
+          <tr><td><code>/claim trust &lt;player&gt; &lt;rank&gt;</code></td><td>Give someone a rank — see <a href="#roles">Ranks inside of Claims</a> for what each one can do</td></tr>
+          <tr><td><code>/claim untrust &lt;player&gt;</code></td><td>Remove someone from your base</td></tr>
+          <tr><td><code>/claim list</code></td><td>Who has access to this base, and at what rank</td></tr>
+          <tr><td><code>/claim board</code></td><td>Turn the scoreboard on or off for yourself</td></tr>
           <tr><td><code>/unclaim</code></td><td>Give up the cube you're standing in and lower your rent</td></tr>
           <tr><td><code>/claimtop</code></td><td>Leaderboard of the biggest bases</td></tr>
-          <tr><td><code>/claim trust &lt;player&gt; &lt;rank&gt;</code></td><td>Give someone a rank on your base — see <a href="#roles">Who Can Touch What?</a> for what each rank can do</td></tr>
+          <tr><td><code>/toggleclaimnotifications</code></td><td>Stop the enter/exit messages following you around</td></tr>
         </tbody>
       </table>
 
@@ -506,28 +545,29 @@
       <table class="tbl">
         <thead><tr><th>Command</th><th>What it does</th></tr></thead>
         <tbody>
-          <tr><td><code>/seed</code></td><td>Buy a pumpkin seed</td></tr>
+          <tr><td><code>/achievement</code></td><td>Your six first steps — what's done, what's next, what it pays</td></tr>
+          <tr><td><code>/seed</code></td><td>Open the seed shop</td></tr>
           <tr><td><code>/co i</code></td><td>Toggle detective mode — right-click anything to see who broke, placed or opened it</td></tr>
           <tr><td><code>/discord</code></td><td>Guess what this one does</td></tr>
         </tbody>
       </table>
+      <p class="muted" style="font-size:.9rem;margin-top:12px">Holding a <b>stick</b> and right-clicking a claim tells you who owns it, what it's called, what's in the rent barrel and whether it's in debt — and lights up its borders for ten seconds.</p>
 
       <h3>Shops</h3>
       <table class="tbl">
         <thead><tr><th>Command</th><th>What it does</th></tr></thead>
         <tbody>
-          <tr><td><code>/shop create</code></td><td>Open a shop — stand by the chest first, then set the price in the menu that opens</td></tr>
-          <tr><td><code>/shop remove</code></td><td>Remove it</td></tr>
+          <tr><td><code>/shop create &lt;price&gt;</code></td><td>Open a shop on the chest you're looking at, holding the item you want to sell</td></tr>
+          <tr><td><code>/shop remove</code></td><td>Close it down</td></tr>
         </tbody>
       </table>
 
-      <h3>Banishment</h3>
+      <h3>Drowning</h3>
       <table class="tbl">
         <thead><tr><th>Command</th><th>What it does</th></tr></thead>
         <tbody>
-          <tr><td><code>/banish &lt;player&gt;</code></td><td>Send them to the Nether jail — you'll need 640 pumpkins in your inventory</td></tr>
-          <tr><td><code>/buyout</code></td><td>Buy your freedom — you'll need 576 nether wart blocks in your inventory</td></tr>
-          <tr><td><code>/selfbanish</code></td><td>Jail yourself, free — don't do this</td></tr>
+          <tr><td><code>/drown &lt;player&gt;</code></td><td>Take someone's air — you'll need 640 pumpkins in your inventory</td></tr>
+          <tr><td><code>/buyout</code></td><td>Buy your lungs back — you'll need 1024 dried kelp blocks in your inventory</td></tr>
         </tbody>
       </table>
 
