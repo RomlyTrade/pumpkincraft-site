@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altis · OceanWorld2</title>
+<meta name="description" content="Altis, the main island of OceanWorld2: cubic claims, rent, drowning, bosses, raid sites and live leaderboards.">
+<link rel="icon" href="/main-island.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ow2.css">
+</head>
+<body>
+<canvas id="water" width="16" height="16"></canvas>
+<div class="shade"></div>
+
+<main>
+  <div class="topbar">
+    <a class="back" href="/">◂ OCEANWORLD2</a>
+    <button class="ip-btn small" data-copy="oceanworld2.com">oceanworld2.com</button>
+  </div>
+  <div class="copied" id="copied"></div>
+
+  <section class="hero">
+    <img src="/main-island.png" alt="Altis">
+    <div class="hero-text">
+      <h1>ALTIS</h1>
+      <p>The main island. The world is a grid of 16×16×16 cubes that you claim, protect and pay rent on.</p>
+      <p>Everyone can see who broke, placed or opened any block, and anyone can drown a player off the island for good.</p>
+    </div>
+  </section>
+
+  <nav class="jump">
+    <a href="#live">LIVE</a><a href="#currency">CURRENCY</a><a href="#claims">CLAIMS</a><a href="#ranks">RANKS</a>
+    <a href="#seeds">SEEDS</a><a href="#shops">SHOPS</a><a href="#bosses">BOSSES</a><a href="#raids">RAIDS</a>
+    <a href="#drowning">DROWNING</a><a href="#rules">RULES</a><a href="#commands">COMMANDS</a><a href="#screenshots">SCREENSHOTS</a><a href="#map">MAP</a>
+  </nav>
+
+  <section class="block" id="live">
+    <h2>LIVE LEADERBOARDS</h2>
+    <div class="boards">
+      <div class="board"><h3>BIGGEST BASES</h3><ol id="b-bases"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3>TOP SHOPKEEPERS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3>MOST HOURS PLAYED</h3><ol id="b-play"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3>MOST MOBS KILLED</h3><ol id="b-mobs"><li class="empty">Loading…</li></ol></div>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h3>ONLINE NOW</h3>
+      <div class="online" id="online"><span>…</span></div>
+      <div class="updated" id="updated"></div>
+    </div>
+  </section>
+
+  <section class="block" id="currency">
+    <h2>CURRENCY</h2>
+    <div class="panel">
+      <p>Money is <b>Shmeckle Block Tokens</b> (SBT) — pumpkins, reskinned as gold bullion by the server pack. No virtual balance, no <code>/pay</code>: you hold your wealth, and trade happens face to face. Some in-game messages still call them pumpkins.</p>
+      <p>Pumpkin seeds are <b>Shmeckle Shmackers</b>. Melons and their seeds belong to <a href="/stratis">Stratis</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="claims">
+    <h2>CLAIMS &amp; RENT</h2>
+    <div class="grid2">
+      <div class="panel"><h3>1 · CLAIM</h3><p>Stand where you want to live and run <code>/claim here</code>. You get a Claim Barrel and a 60-second outline of the cube.</p></div>
+      <div class="panel"><h3>2 · ANCHOR</h3><p>Place the barrel. Your base is created and you name it in chat. That barrel is now your rent barrel — protected and hopper-proof.</p></div>
+      <div class="panel"><h3>3 · EXTEND</h3><p><code>/claim here</code> again in any touching cube — above and below too — to grow the base. One barrel covers all of it.</p></div>
+      <div class="panel"><h3>4 · FEED IT</h3><p>Drop SBT in the barrel. Rent is taken daily at <b>00:00 GMT</b>. Run dry and debt builds.</p></div>
+    </div>
+    <div class="panel">
+      <h3>OVERWORLD — PER CUBE, PER DAY</h3>
+      <div class="tablewrap"><table>
+        <tr><th>LAYER</th><th>HEIGHT</th><th class="num">COST</th></tr>
+        <tr><td>Sky</td><td>96 → 320</td><td class="num">6 SBT</td></tr>
+        <tr><td>Sea level</td><td>48 → 96</td><td class="num">3 SBT</td></tr>
+        <tr><td>Stone</td><td>0 → 48</td><td class="num">2 SBT</td></tr>
+        <tr><td>Deepslate</td><td>-64 → 0</td><td class="num">1 SBT</td></tr>
+      </table></div>
+      <p style="margin-top:10px">Building high is expensive on purpose. The Nether charges <b>32 nether warts</b> per cube per day. The End can't be claimed.</p>
+    </div>
+    <div class="panel">
+      <h3>DEADLINE</h3>
+      <p>Any unpaid debt at <b>Sunday 18:00 GMT</b> deletes the whole base. Check with <code>/claim</code> and shrink with <code>/unclaim</code> if rent is outrunning your farm.</p>
+    </div>
+  </section>
+
+  <section class="block" id="ranks">
+    <h2>RANKS INSIDE CLAIMS</h2>
+    <div class="grid2">
+      <div class="panel"><h3>VISITOR · 24 HOURS</h3><p>Doors, gates, buttons, levers, boats and minecarts. Can't build, break or open chests. Cleans itself up the next day.</p></div>
+      <div class="panel"><h3>PERMVISITOR · NEVER EXPIRES</h3><p>Same as a Visitor, set once and left alone — for neighbours with a standing invitation.</p></div>
+      <div class="panel"><h3>MEMBER</h3><p>Build, break and open storage. Can't touch the rent barrel, the member list, or unclaim.</p></div>
+      <div class="panel"><h3>TRUSTED · FULL CONTROL</h3><p>Rent barrel, members, renaming and unclaiming. Only for someone you'd trust with all of it.</p></div>
+    </div>
+    <div class="panel"><p>Anyone can still place water, trample crops, or build directly above your base — plan around it.</p></div>
+  </section>
+
+  <section class="block" id="seeds">
+    <h2>SEEDS</h2>
+    <div class="panel">
+      <p>Shmeckle Shmackers have no other source — no crafting, no shearing, no traders. <code>/seed</code> is the only way, and every seed you buy makes your next one dearer.</p>
+      <p>The ladder: 16, 20, 24, 28, 36, 40, 48, 60, 68, 84 SBT — tracked per player. Breaking a stem gives exactly one seed back, so a farm sustains itself but never multiplies for free.</p>
+    </div>
+  </section>
+
+  <section class="block" id="shops">
+    <h2>SHOPS</h2>
+    <div class="panel">
+      <p>Hold what you're selling, look at a chest or barrel and run <code>/shop create &lt;price&gt;</code>. Buyers right-click: their SBT goes in, one item comes out. Restock and collect whenever — only you can see what it's earned.</p>
+    </div>
+  </section>
+
+  <section class="block" id="bosses">
+    <h2>BOSS ARENA</h2>
+    <div class="grid3">
+      <div class="panel"><h3>PAY</h3><p>Ender Dragon <b>512</b> · Warden <b>448</b> · Wither <b>384</b> SBT at the altar.</p></div>
+      <div class="panel"><h3>FIGHT</h3><p>Thirty seconds' warning, announced to the whole server. Everyone can come. PvP stays on.</p></div>
+      <div class="panel"><h3>REWARD</h3><p>The killing blow spins the wheel — not the summoner, not the group.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="raids">
+    <h2>RAID SITES</h2>
+    <div class="panel">
+      <p>Bastions and fortresses at fixed spots in the Nether, rebuilt from scratch every <b>Sunday 06:00 GMT</b>. One set of chests — first there wins. Bring gold.</p>
+    </div>
+  </section>
+
+  <section class="block" id="drowning">
+    <h2>DROWNING</h2>
+    <div class="grid2">
+      <div class="panel"><h3>TAKE SOMEONE'S AIR</h3><p><code>/drown &lt;player&gt;</code> costs <b>640 SBT</b>. They surface somewhere deep and cold with a mangrove propagule, two sea lanterns and a furnace.</p></div>
+      <div class="panel"><h3>BUY YOUR LUNGS BACK</h3><p><code>/buyout</code> with <b>1024 dried kelp blocks</b> in your inventory and you're returned to your bed.</p></div>
+    </div>
+    <div class="panel">
+      <p>Drowned players can swim anywhere wet but can't set foot on land. They lose global chat and talk in <b>[Drowned]</b>, heard by anyone standing in water. Their overworld bases freeze for 7 days. Portals are closed to them, and dying puts them back in the water.</p>
+    </div>
+  </section>
+
+  <section class="block" id="rules">
+    <h2>RULES</h2>
+    <div class="grid2">
+      <div class="panel"><h3>NO MODDING</h3><p>No add-ons that give you an unfair advantage.</p></div>
+      <div class="panel"><h3>NO EXPLOITING</h3><p>No abusing bugs, pearling through walls and so on.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="commands">
+    <h2>COMMANDS</h2>
+    <div class="panel tablewrap"><table>
+      <tr><th>COMMAND</th><th>WHAT IT DOES</th></tr>
+      <tr><td><code>/claim</code></td><td>Claims menu — bases, rent, debt, members, settings</td></tr>
+      <tr><td><code>/claim here</code></td><td>Claim or extend into the cube you're standing in</td></tr>
+      <tr><td><code>/claim trust &lt;player&gt; &lt;rank&gt;</code></td><td>Give someone a rank</td></tr>
+      <tr><td><code>/claim untrust &lt;player&gt;</code></td><td>Remove someone from your base</td></tr>
+      <tr><td><code>/unclaim</code></td><td>Give up the cube you're standing in</td></tr>
+      <tr><td><code>/claimtop</code></td><td>Biggest bases</td></tr>
+      <tr><td><code>/seed</code></td><td>Seed shop</td></tr>
+      <tr><td><code>/shop create &lt;price&gt;</code></td><td>Open a shop on the chest you're looking at</td></tr>
+      <tr><td><code>/co i</code></td><td>Detective mode — who broke, placed or opened anything</td></tr>
+      <tr><td><code>/drown &lt;player&gt;</code> · <code>/buyout</code></td><td>Drown someone · buy your way out</td></tr>
+      <tr><td><code>/achievement</code></td><td>Your first steps and what they pay</td></tr>
+    </table></div>
+    <div class="panel"><p>Right-click a claim holding a <b>stick</b> to see who owns it, what's in the rent barrel and whether it's in debt.</p></div>
+  </section>
+
+  <section class="block" id="screenshots">
+    <h2>SCREENSHOTS</h2>
+    <div class="gallery">
+      <a href="https://pumpkincraft.net/piimg1.png"><img src="https://pumpkincraft.net/piimg1.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg2.png"><img src="https://pumpkincraft.net/piimg2.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg3.png"><img src="https://pumpkincraft.net/piimg3.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg4.png"><img src="https://pumpkincraft.net/piimg4.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg5.png"><img src="https://pumpkincraft.net/piimg5.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg6.png"><img src="https://pumpkincraft.net/piimg6.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg7.png"><img src="https://pumpkincraft.net/piimg7.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg8.png"><img src="https://pumpkincraft.net/piimg8.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/piimg9.png"><img src="https://pumpkincraft.net/piimg9.png" alt="Altis" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/baimg1.png"><img src="https://pumpkincraft.net/baimg1.png" alt="Boss arena" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/baimg2.png"><img src="https://pumpkincraft.net/baimg2.png" alt="Boss arena" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/baimg3.png"><img src="https://pumpkincraft.net/baimg3.png" alt="Boss arena" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/rsimg1.png"><img src="https://pumpkincraft.net/rsimg1.png" alt="Raid site" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/rsimg2.png"><img src="https://pumpkincraft.net/rsimg2.png" alt="Raid site" loading="lazy"></a>
+      <a href="https://pumpkincraft.net/drimg1.png"><img src="https://pumpkincraft.net/drimg1.png" alt="Drowned" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="block" id="map">
+    <h2>LIVE MAP</h2>
+    <iframe class="mapframe" src="https://map.oceanworld2.com/#world:430:64:450:1100:0:0.01:0:0:perspective" title="Live map of Altis" loading="lazy"></iframe>
+  </section>
+</main>
+<footer>Prices and rules can change.</footer>
+<div class="lightbox"><img alt=""></div>
+
+<script src="/assets/ow2.js"></script>
+<script>
+OW2.live().then(d => {
+  const a = d.altis || {};
+  OW2.board('b-bases', a.bases, 'cubes');
+  OW2.board('b-shops', a.shops, 'SBT');
+  OW2.board('b-play', a.playtime, 'h');
+  OW2.board('b-mobs', a.mobKills, '');
+  OW2.online(d); OW2.stamp(d);
+}).catch(() => {
+  ['b-bases', 'b-shops', 'b-play', 'b-mobs'].forEach(id => OW2.board(id, []));
+  document.getElementById('online').innerHTML = '<span style="border-color:var(--muted);background:none">Live data unavailable</span>';
+});
+</script>
+</body>
+</html>
