@@ -174,3 +174,53 @@ svg.slice { width: 100%; height: auto; display: block; border: 3px solid var(--s
 ol.steps { margin: 0; padding-left: 26px; }
 ol.steps li { margin: 4px 0; }
 img.drowned-art { width: 100%; height: auto; display: block; margin: 14px 0; border: 3px solid var(--edge); box-shadow: 4px 4px 0 var(--shadow); image-rendering: pixelated; }
+
+/* Stratis plot diagram */
+.plotmap { display: grid; grid-template-columns: 70px repeat(3, 1fr); grid-template-rows: auto repeat(3, minmax(110px, auto)); gap: 0; border: 3px solid var(--shadow); box-shadow: 4px 4px 0 var(--shadow); }
+.pm-corner { background: var(--panel); }
+.pm-head { background: var(--panel); text-align: center; padding: 8px 4px; font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--muted); border-left: 2px dashed rgba(255,255,255,0.35); }
+.pm-side { background: var(--panel); display: flex; align-items: center; justify-content: center; font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--muted); writing-mode: vertical-rl; transform: rotate(180deg); border-top: 2px dashed rgba(255,255,255,0.35); }
+.pm-cell { position: relative; border-left: 2px dashed rgba(255,255,255,0.45); border-top: 2px dashed rgba(255,255,255,0.45); display: flex; align-items: center; justify-content: center; padding: 26px 6px 10px; }
+.pm-cell.sky { background: #7ea8ff; }
+.pm-cell.ground { background: linear-gradient(#7ea8ff 0 86%, #5daa3a 86% 92%, #8a5a33 92%); }
+.pm-cell.under { background: repeating-linear-gradient(90deg, #7d7d7d 0 14px, #737373 14px 28px); }
+.pm-cell::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.pm-cell.t1::after { background: rgba(155,227,122,0.28); box-shadow: inset 0 0 0 3px #9be37a; }
+.pm-cell.t2::after { background: rgba(127,220,255,0.22); box-shadow: inset 0 0 0 3px #7fdcff; }
+.pm-cell.t3::after { background: rgba(232,182,48,0.2); box-shadow: inset 0 0 0 3px #e8b630; }
+.tb { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; font-family: 'Press Start 2P', monospace; font-size: 10px; color: #020818; text-shadow: none; }
+.pm-cell .tb { position: absolute; top: 6px; left: 6px; z-index: 1; }
+.t1 .tb, .tb.t1 { background: #9be37a; }
+.t2 .tb { background: #7fdcff; }
+.t3 .tb { background: #e8b630; }
+.pm-feat { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(2,8,24,0.78); padding: 6px 8px; font-family: 'Press Start 2P', monospace; font-size: 9px; color: #fff; }
+.pm-feat .ic { display: flex; gap: 4px; }
+.pm-feat img, .pm-feat svg { width: 30px; height: 30px; image-rendering: pixelated; }
+
+.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+.tier-card { background: var(--panel); border: 3px solid; box-shadow: 4px 4px 0 var(--shadow); padding: 14px 16px; }
+.tier-card.t1 { border-color: #9be37a; } .tier-card.t2 { border-color: #7fdcff; } .tier-card.t3 { border-color: #e8b630; }
+.tier-card h3 { margin: 0 0 8px; display: flex; align-items: center; gap: 8px; font-family: 'Press Start 2P', monospace; font-size: 12px; }
+.tier-card p { margin: 0 0 6px; }
+.tier-card .cost { color: var(--muted); }
+.tier-card .cost b { color: #ffe9a0; font-weight: normal; }
+.tier-card .small { font-size: 18px; color: var(--muted); }
+.tiers + .panel { margin-top: 14px; }
+
+/* Auto-farm flow */
+.flow { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.fstep { flex: 1 1 110px; display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--panel); border: 3px solid var(--edge); box-shadow: 4px 4px 0 var(--shadow); padding: 14px 8px; }
+.fstep img { width: 48px; height: 48px; image-rendering: pixelated; }
+.fstep span { font-family: 'Press Start 2P', monospace; font-size: 9px; text-align: center; }
+.farrow { display: flex; flex-direction: column; align-items: center; color: #ffe9a0; font-size: 28px; text-shadow: 2px 2px 0 var(--shadow); }
+.farrow b { font-family: 'Press Start 2P', monospace; font-size: 8px; font-weight: normal; color: var(--muted); }
+@media (max-width: 800px) {
+  .tiers { grid-template-columns: 1fr; }
+  .plotmap { grid-template-columns: 34px repeat(3, 1fr); grid-template-rows: auto repeat(3, minmax(90px, auto)); }
+  .pm-feat { font-size: 7px; padding: 4px; }
+  .pm-feat img, .pm-feat svg { width: 22px; height: 22px; }
+  .flow { flex-direction: column; }
+  .fstep { width: 100%; flex-direction: row; justify-content: flex-start; padding: 10px 14px; }
+  .farrow { flex-direction: row; gap: 8px; transform: none; }
+  .farrow::after { content: ""; }
+}

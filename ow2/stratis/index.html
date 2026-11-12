@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stratis · OceanWorld2</title>
-<meta name="description" content="Stratis, the farm island of OceanWorld2: rentable plots, three tiers, the well, the tenant and live plot listings.">
+<meta name="description" content="Stratis, the farm island of OceanWorld2: rentable plots, three tiers, the well, the tenant and the only auto-farms on the server.">
 <link rel="icon" href="/stratis.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,14 +27,8 @@
     <div class="hero-text">
       <h1>STRATIS</h1>
       <p>The farm island. Rent a plot, grow Frozen Shmeckle Block Tokens, and upgrade from Farm to Factory to Facility.</p>
-      <p>Everything outside the plots is protected. <code>/warp stratis</code> to get here.</p>
     </div>
   </section>
-
-  <nav class="jump">
-    <a href="#live">LIVE PLOTS</a><a href="#plots">PLOTS</a><a href="#tiers">TIERS</a><a href="#rent">RENT</a>
-    <a href="#well">THE WELL</a><a href="#tenant">TENANT</a><a href="#tokens">TOKENS</a><a href="#commands">COMMANDS</a><a href="#map">MAP</a>
-  </nav>
 
   <section class="block" id="live">
     <h2>LIVE PLOTS</h2>
@@ -45,93 +39,74 @@
       </table>
       <div class="updated" id="updated"></div>
     </div>
-    <div class="panel">
-      <h3>ONLINE NOW</h3>
-      <div class="online" id="online"><span>…</span></div>
-    </div>
   </section>
 
-  <section class="block" id="plots">
-    <h2>HOW A PLOT WORKS</h2>
-    <div class="grid2">
-      <div class="panel"><h3>THE SHAPE</h3><p>A plot is three chunks in a row (48 × 16) and three cubes tall: underground, ground and sky. That's nine 16×16×16 cubes.</p></div>
-      <div class="panel"><h3>LOCKED CUBES</h3><p>You start with one cube — the ground cube of the first chunk, your farm. The rest stay locked and protected from everyone, you included, until you upgrade.</p></div>
-      <div class="panel"><h3>CLAIMING</h3><p>Stand inside a free plot and type <code>/plot</code>. Claiming costs <b>64 SBT</b> from your inventory. One plot per player.</p></div>
-      <div class="panel"><h3>MEMBERS</h3><p>Add friends from <code>/plot</code>. Members can build and farm in every unlocked cube and use the same menu.</p></div>
-    </div>
-    <div class="panel"><p><b>Ice Shmeckle Shmackers</b> only grow inside plot farm cubes, so Stratis is the only place Frozen tokens come from.</p></div>
-  </section>
+  <section class="block" id="plot">
+    <h2>YOUR PLOT</h2>
+    <div class="plotmap">
+      <div class="pm-corner"></div>
+      <div class="pm-head">CHUNK 1</div><div class="pm-head">CHUNK 2</div><div class="pm-head">CHUNK 3</div>
 
-  <section class="block" id="tiers">
-    <h2>TIERS</h2>
-    <div class="panel tablewrap"><table>
-      <tr><th>TIER</th><th class="num">UPGRADE</th><th class="num">RENT / DAY</th><th>UNLOCKS</th></tr>
-      <tr><td><span class="tier t1">1 · FARM</span></td><td class="num">64 SBT</td><td class="num">32 SBT</td><td>Ground cube of chunk 1</td></tr>
-      <tr><td><span class="tier t2">2 · FACTORY</span></td><td class="num">1,728 SBT</td><td class="num">48 SBT</td><td>Ground and sky cubes of chunks 1–2, plus the well</td></tr>
-      <tr><td><span class="tier t3">3 · FACILITY</span></td><td class="num">3,456 SBT</td><td class="num">64 SBT</td><td>All nine cubes, plus the tenant</td></tr>
-    </table></div>
-    <div class="panel"><p>Upgrades are paid from the plot's balance, so deposit first, then upgrade from <code>/plot</code>.</p></div>
-  </section>
+      <div class="pm-side">SKY</div>
+      <div class="pm-cell sky t2"><span class="tb">2</span></div>
+      <div class="pm-cell sky t2"><span class="tb">2</span></div>
+      <div class="pm-cell sky t3"><span class="tb">3</span></div>
 
-  <section class="block" id="rent">
-    <h2>RENT</h2>
-    <div class="grid3">
-      <div class="panel"><h3>DEPOSIT</h3><p>The rent button in <code>/plot</code> deposits every SBT in your inventory into the plot's balance.</p></div>
-      <div class="panel"><h3>DAILY</h3><p>Rent comes out at <b>00:00 GMT</b>. If the balance can't cover it, the rest becomes debt. Deposits clear debt first.</p></div>
-      <div class="panel"><h3>SUNDAY</h3><p>Still in debt at <b>Sunday 18:00 GMT</b>? The plot is wiped back to how it started and freed for someone else.</p></div>
-    </div>
-  </section>
-
-  <section class="block" id="well">
-    <h2>THE WELL</h2>
-    <div class="panel">
-      <p>From tier 2, the plot's well produces <b>one Ice Shmeckle Shmacker a day</b> while rent is paid. Collect them from <code>/plot</code>. That's the only new source of Ice Shmackers anywhere — trade them, plant them, sell them.</p>
-    </div>
-  </section>
-
-  <section class="block" id="tenant">
-    <h2>THE TENANT</h2>
-    <div class="grid2">
-      <div class="panel">
-        <h3>KEEP IT ALIVE</h3>
-        <p>Reaching tier 3 moves a Tenant into chunk 3. It can't leave, and only you and your members can hurt it.</p>
-        <p>If it dies you lose that week's reward. Revive it from <code>/plot</code> for <b>192 SBT</b> (3 stacks).</p>
+      <div class="pm-side">GROUND</div>
+      <div class="pm-cell ground t1"><span class="tb">1</span>
+        <div class="pm-feat"><span class="ic"><img src="/assets/ice-shmacker.png" alt=""><img src="/assets/frozen.png" alt=""></span>FARM</div>
       </div>
-      <div class="panel">
-        <h3>THE COSY ROOM</h3>
-        <ul>
-          <li>9 carpets, any colour</li>
-          <li>32 oak logs</li>
-          <li>1 campfire (or soul campfire)</li>
-          <li>1 block of gold</li>
-        </ul>
-        <p style="margin-top:8px">All somewhere in chunk 3.</p>
+      <div class="pm-cell ground t2"><span class="tb">2</span>
+        <div class="pm-feat"><span class="ic"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="12" height="2" fill="#8a5a33"/><rect x="3" y="3" width="1" height="6" fill="#6b4a2b"/><rect x="12" y="3" width="1" height="6" fill="#6b4a2b"/><rect x="2" y="9" width="12" height="6" fill="#7d7d7d"/><rect x="3" y="9" width="10" height="2" fill="#3f76e4"/><rect x="2" y="12" width="3" height="1" fill="#5f5f5f"/><rect x="9" y="13" width="3" height="1" fill="#5f5f5f"/></svg></span>WELL</div>
+      </div>
+      <div class="pm-cell ground t3"><span class="tb">3</span>
+        <div class="pm-feat"><span class="ic"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="5" y="2" width="6" height="5" fill="#9fe7ff"/><rect x="6" y="4" width="1" height="1" fill="#1b3a6b"/><rect x="9" y="4" width="1" height="1" fill="#1b3a6b"/><rect x="5" y="7" width="6" height="5" fill="#56c8f0"/><rect x="1" y="6" width="4" height="3" fill="#d8f6ff" opacity="0.9"/><rect x="11" y="6" width="4" height="3" fill="#d8f6ff" opacity="0.9"/><rect x="6" y="12" width="1" height="2" fill="#56c8f0"/><rect x="9" y="12" width="1" height="2" fill="#56c8f0"/></svg></span>TENANT</div>
+      </div>
+
+      <div class="pm-side">UNDER</div>
+      <div class="pm-cell under t3"><span class="tb">3</span></div>
+      <div class="pm-cell under t3"><span class="tb">3</span></div>
+      <div class="pm-cell under t3"><span class="tb">3</span></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-card t1">
+        <h3><span class="tb">1</span> FARM</h3>
+        <p class="cost">Claim <b>64</b> · Rent <b>32</b> / day</p>
+        <p>Grow Ice Shmeckle Shmackers in your farm cube.</p>
+      </div>
+      <div class="tier-card t2">
+        <h3><span class="tb">2</span> FACTORY</h3>
+        <p class="cost">Upgrade <b>1,728</b> · Rent <b>48</b> / day</p>
+        <p>The well gives <b>1 Ice Shmeckle Shmacker a day</b>.</p>
+      </div>
+      <div class="tier-card t3">
+        <h3><span class="tb">3</span> FACILITY</h3>
+        <p class="cost">Upgrade <b>3,456</b> · Rent <b>64</b> / day</p>
+        <p>Keep the tenant alive in a cosy room for a weekly <b>Wheel Token</b>.</p>
+        <p class="small">9 carpets · 32 oak logs · campfire · gold block. Revive: 192.</p>
       </div>
     </div>
-    <div class="panel"><p>At the Sunday check, a plot with rent paid, a living tenant and a full cosy room earns a <b>Wheel Token</b>. Right-click it to spin the same wheel as a Wither kill.</p></div>
-  </section>
 
-  <section class="block" id="tokens">
-    <h2>FROZEN TOKENS</h2>
-    <div class="grid2">
-      <div class="panel"><h3>FROZEN SHMECKLE BLOCK TOKENS</h3><p>What Ice Shmackers grow. Frozen tokens are worthless and delicate — pistons smash them, so they're built for auto-farms. Regular tokens can't be pushed or broken by pistons.</p></div>
-      <div class="panel"><h3>THAWING THEM OUT</h3><p>A smashed Frozen token drops <b>Shmackaroons</b>. Craft 9 into a <b>Cracked Shmeckle Block Token</b>, then smelt it in a furnace into a real one.</p></div>
+    <div class="panel">
+      <p>Stand in a free plot and type <code>/plot</code>. Rent comes out of your plot every day; still in debt at <b>Sunday 18:00 GMT</b> and the plot is wiped.</p>
     </div>
-    <div class="panel"><p>Shmackers are grey by default. Right-click them with a dye to recolour them.</p></div>
   </section>
 
-  <section class="block" id="commands">
-    <h2>COMMANDS</h2>
-    <div class="panel tablewrap"><table>
-      <tr><th>COMMAND</th><th>WHAT IT DOES</th></tr>
-      <tr><td><code>/plot</code></td><td>Claim the plot you're standing in, or open your plot's menu from anywhere: name, members, tier, upgrade, rent, well and tenant</td></tr>
-      <tr><td><code>/warp stratis</code></td><td>Travel to Stratis</td></tr>
-    </table></div>
-  </section>
-
-  <section class="block" id="map">
-    <h2>LIVE MAP</h2>
-    <iframe class="mapframe" src="https://map.oceanworld2.com/#world:1510:64:620:1100:0:0.01:0:0:perspective" title="Live map of Stratis" loading="lazy"></iframe>
+  <section class="block" id="autofarms">
+    <h2>AUTO FARMS</h2>
+    <div class="panel">
+      <p>Stratis is the only place you can auto-farm. Ice Shmeckle Shmackers grow <b>Frozen</b> Shmeckle Block Tokens: worthless and delicate, so pistons can break them.</p>
+    </div>
+    <div class="flow">
+      <div class="fstep"><img src="/assets/frozen.png" alt=""><span>FROZEN SBT</span></div>
+      <div class="farrow"><b>BREAK</b>▸</div>
+      <div class="fstep"><img src="/assets/shmackaroon.png" alt=""><span>SHMACKAROONS</span></div>
+      <div class="farrow"><b>CRAFT 9</b>▸</div>
+      <div class="fstep"><img src="/assets/cracked.png" alt=""><span>CRACKED SBT</span></div>
+      <div class="farrow"><b>SMELT</b>▸</div>
+      <div class="fstep"><img src="/assets/sbt.png" alt=""><span>SBT</span></div>
+    </div>
   </section>
 </main>
 <footer>Prices and rules can change.</footer>
@@ -150,10 +125,9 @@ OW2.live().then(d => {
     + '<td class="num">' + (p.owner ? p.members : '') + '</td>'
     + '<td>' + (p.tenant === 'alive' ? '<span class="dot"></span>Alive' : p.tenant === 'dead' ? '<span class="dot off"></span>Dead' : '') + '</td>'
     + '</tr>').join('');
-  OW2.online(d); OW2.stamp(d);
+  OW2.stamp(d);
 }).catch(() => {
   document.getElementById('plots').innerHTML = '<tr><td colspan="5">Live data unavailable</td></tr>';
-  document.getElementById('online').innerHTML = '<span style="border-color:var(--muted);background:none">Live data unavailable</span>';
 });
 </script>
 </body>
