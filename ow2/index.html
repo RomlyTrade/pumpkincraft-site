@@ -125,6 +125,20 @@
   }
   .w-lists a:hover { color: var(--list); }
 
+
+  /* Server-wide leaderboards */
+  .boards { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .board { background: var(--panel); border: 3px solid var(--list); box-shadow: 4px 4px 0 var(--shadow); padding: 14px 16px; }
+  .board h2 { margin: 0 0 8px; font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--list); text-shadow: 2px 2px 0 var(--shadow); }
+  .board ol { margin: 0; padding: 0; list-style: none; counter-reset: r; }
+  .board li { display: flex; gap: 10px; align-items: baseline; padding: 3px 0; border-bottom: 1px dashed rgba(232,182,48,0.25); counter-increment: r; }
+  .board ol li::before { content: counter(r); font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--muted); width: 22px; }
+  .board .who { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .board .val { color: #ffe9a0; white-space: nowrap; }
+  .board .empty { color: var(--muted); }
+  .board .online { display: flex; flex-wrap: wrap; gap: 8px; }
+  .board .online span { background: rgba(63,191,95,0.18); border: 1px solid #3fbf5f; padding: 0 8px; }
+  @media (max-width: 900px) { .boards { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .widgets { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) {
     .widgets { grid-template-columns: 1fr; }
@@ -183,6 +197,12 @@
       <h2>SERVER LISTS</h2>
       <div id="lists"></div>
     </div>
+  </section>
+
+  <section class="boards">
+    <div class="board"><h2>MOST HOURS PLAYED</h2><ol id="b-play"><li class="empty">Loading…</li></ol></div>
+    <div class="board"><h2>MOST MOBS KILLED</h2><ol id="b-mobs"><li class="empty">Loading…</li></ol></div>
+    <div class="board"><h2>ONLINE NOW</h2><div class="online" id="online"><span>…</span></div></div>
   </section>
 </main>
 
@@ -272,6 +292,27 @@ fetch('https://api.mcsrvstat.us/3/oceanworld2.com')
       p.textContent = j.players.online + ' / ' + j.players.max + ' players';
     } else s.innerHTML = '<span class="dot off"></span>Offline';
   }).catch(() => { document.getElementById('sv-status').textContent = ''; });
+/* ---- Server-wide leaderboards ---- */
+(function () {
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const board = (id, rows, unit) => {
+    const el = document.getElementById(id);
+    el.innerHTML = rows && rows.length
+      ? rows.map(r => '<li><span class="who">' + esc(r.name) + '</span><span class="val">' + fmt(r.value) + (unit ? ' ' + unit : '') + '</span></li>').join('')
+      : '<li class="empty">No entries yet</li>';
+  };
+  fetch('/data/live.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    const a = d.altis || {};
+    board('b-play', a.playtime, 'h');
+    board('b-mobs', a.mobKills, '');
+    document.getElementById('online').innerHTML = d.online && d.online.length
+      ? d.online.map(n => '<span>' + esc(n) + '</span>').join('')
+      : '<span style="border-color:#b9cdf2;background:none">Nobody right now</span>';
+  }).catch(() => {
+    ['b-play', 'b-mobs'].forEach(id => board(id, []));
+    document.getElementById('online').textContent = 'Unavailable';
+  });
+})();
 </script>
 </body>
 </html>

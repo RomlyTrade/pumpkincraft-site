@@ -32,68 +32,132 @@
   </section>
 
   <nav class="jump">
-    <a href="#live">LIVE</a><a href="#currency">CURRENCY</a><a href="#claims">CLAIMS</a><a href="#ranks">RANKS</a>
+    <a href="#claims">CLAIMS &amp; CURRENCY</a><a href="#live">LEADERBOARDS</a>
     <a href="#seeds">SEEDS</a><a href="#shops">SHOPS</a><a href="#bosses">BOSSES</a><a href="#raids">RAIDS</a>
     <a href="#drowning">DROWNING</a><a href="#rules">RULES</a><a href="#commands">COMMANDS</a><a href="#screenshots">SCREENSHOTS</a><a href="#map">MAP</a>
   </nav>
 
-  <section class="block" id="live">
-    <h2>LIVE LEADERBOARDS</h2>
-    <div class="boards">
-      <div class="board"><h3>BIGGEST BASES</h3><ol id="b-bases"><li class="empty">Loading…</li></ol></div>
-      <div class="board"><h3>TOP SHOPKEEPERS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
-      <div class="board"><h3>MOST HOURS PLAYED</h3><ol id="b-play"><li class="empty">Loading…</li></ol></div>
-      <div class="board"><h3>MOST MOBS KILLED</h3><ol id="b-mobs"><li class="empty">Loading…</li></ol></div>
-    </div>
-    <div class="panel" style="margin-top:14px">
-      <h3>ONLINE NOW</h3>
-      <div class="online" id="online"><span>…</span></div>
-      <div class="updated" id="updated"></div>
-    </div>
-  </section>
-
-  <section class="block" id="currency">
-    <h2>CURRENCY</h2>
-    <div class="panel">
-      <p>Money is <b>Shmeckle Block Tokens</b> (SBT) — pumpkins, reskinned as gold bullion by the server pack. No virtual balance, no <code>/pay</code>: you hold your wealth, and trade happens face to face. Some in-game messages still call them pumpkins.</p>
-      <p>Pumpkin seeds are <b>Shmeckle Shmackers</b>. Melons and their seeds belong to <a href="/stratis">Stratis</a>.</p>
-    </div>
-  </section>
-
   <section class="block" id="claims">
-    <h2>CLAIMS &amp; RENT</h2>
-    <div class="grid2">
-      <div class="panel"><h3>1 · CLAIM</h3><p>Stand where you want to live and run <code>/claim here</code>. You get a Claim Barrel and a 60-second outline of the cube.</p></div>
-      <div class="panel"><h3>2 · ANCHOR</h3><p>Place the barrel. Your base is created and you name it in chat. That barrel is now your rent barrel — protected and hopper-proof.</p></div>
-      <div class="panel"><h3>3 · EXTEND</h3><p><code>/claim here</code> again in any touching cube — above and below too — to grow the base. One barrel covers all of it.</p></div>
-      <div class="panel"><h3>4 · FEED IT</h3><p>Drop SBT in the barrel. Rent is taken daily at <b>00:00 GMT</b>. Run dry and debt builds.</p></div>
-    </div>
+    <h2>CLAIMS &amp; CURRENCY</h2>
+
     <div class="panel">
-      <h3>OVERWORLD — PER CUBE, PER DAY</h3>
+      <h3>CLAIMS</h3>
+      <p>Our unique claims system works like so:</p>
+      <p><code>/claim</code> will protect the cubic chunk you are stood in. That's 16×16×16.</p>
+    </div>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 96 64" role="img" aria-label="A player standing inside a 16 by 16 claim, with another player bridging over the top and a third mining a tunnel underneath" shape-rendering="crispEdges">
+        <!-- sky -->
+        <rect x="0" y="0" width="96" height="36" fill="#7ea8ff"/>
+        <!-- ground layers -->
+        <rect x="0" y="36" width="96" height="1" fill="#5daa3a"/>
+        <rect x="0" y="37" width="96" height="5" fill="#8a5a33"/>
+        <rect x="0" y="42" width="96" height="22" fill="#7d7d7d"/>
+        <g fill="#6b6b6b"><rect x="6" y="46" width="2" height="1"/><rect x="30" y="58" width="3" height="1"/><rect x="70" y="47" width="2" height="1"/><rect x="85" y="60" width="2" height="1"/><rect x="50" y="61" width="2" height="1"/></g>
+        <!-- mining tunnel under the claim -->
+        <rect x="0" y="52" width="96" height="6" fill="#2b2b2b"/>
+        <rect x="0" y="58" width="96" height="1" fill="#555"/>
+        <g fill="#ffd34d"><rect x="22" y="53" width="1" height="2"/><rect x="74" y="53" width="1" height="2"/></g>
+        <!-- bridge over the claim -->
+        <rect x="0" y="12" width="96" height="2" fill="#a9824a"/>
+        <g fill="#8a6634"><rect x="8" y="12" width="1" height="2"/><rect x="24" y="12" width="1" height="2"/><rect x="40" y="12" width="1" height="2"/><rect x="56" y="12" width="1" height="2"/><rect x="72" y="12" width="1" height="2"/><rect x="88" y="12" width="1" height="2"/></g>
+        <!-- the claim: 16 x 16 -->
+        <rect x="40" y="25.5" width="16" height="16" fill="rgba(255,214,90,0.18)" stroke="#ffd65a" stroke-width="0.6" stroke-dasharray="1.2 0.8"/>
+        <!-- Steve inside the claim -->
+        <g transform="translate(46,28)">
+          <rect x="0" y="0" width="4" height="1" fill="#4a2f1a"/>
+          <rect x="0" y="1" width="4" height="2" fill="#c8946a"/>
+          <rect x="1" y="1.5" width="0.6" height="0.6" fill="#3b3bdb"/><rect x="2.4" y="1.5" width="0.6" height="0.6" fill="#3b3bdb"/>
+          <rect x="-1" y="3" width="6" height="3" fill="#2fb3b3"/>
+          <rect x="-1" y="5" width="1" height="1" fill="#c8946a"/><rect x="4" y="5" width="1" height="1" fill="#c8946a"/>
+          <rect x="0" y="6" width="4" height="2" fill="#3a3aa0"/>
+          <rect x="0" y="7.5" width="1.6" height="0.5" fill="#555"/><rect x="2.4" y="7.5" width="1.6" height="0.5" fill="#555"/>
+        </g>
+        <!-- player bridging over -->
+        <g transform="translate(66,4)">
+          <rect x="0" y="0" width="3" height="1" fill="#2b1d10"/>
+          <rect x="0" y="1" width="3" height="2" fill="#b5835a"/>
+          <rect x="-0.5" y="3" width="4" height="3" fill="#c0392b"/>
+          <rect x="0" y="6" width="3" height="2" fill="#333"/>
+          <rect x="3.5" y="3.5" width="2" height="2" fill="#a9824a"/>
+        </g>
+        <!-- player mining under -->
+        <g transform="translate(14,50)">
+          <rect x="0" y="0" width="3" height="1" fill="#e0c060"/>
+          <rect x="0" y="1" width="3" height="2" fill="#d9a77a"/>
+          <rect x="-0.5" y="3" width="4" height="2.5" fill="#6a3fa0"/>
+          <rect x="0" y="5.5" width="3" height="2.5" fill="#2e4d2e"/>
+          <rect x="4" y="2" width="1" height="4" fill="#8a6634"/>
+          <rect x="3" y="1" width="4" height="1" fill="#6fd3d3"/>
+        </g>
+        <!-- labels -->
+        <g font-family="'Press Start 2P', monospace" font-size="2.6" fill="#fff" stroke="#020818" stroke-width="0.5" paint-order="stroke">
+          <text x="48" y="24" text-anchor="middle">YOUR CLAIM 16×16×16</text>
+          <text x="48" y="19" text-anchor="middle">BUILDING ABOVE</text>
+          <text x="48" y="51" text-anchor="middle">MINING BELOW</text>
+        </g>
+      </svg>
+      <figcaption>Players can build above, below and around this perimeter.</figcaption>
+    </figure>
+
+    <div class="panel">
+      <p>After your first cubic chunk, you must place your barrel, which is where you pay your rent into.</p>
+      <p>If you do not pay your rent by <b>Sunday 18:00 GMT</b>, your claim will be dissolved, and no longer protected from other players.</p>
+    </div>
+
+    <div class="panel">
+      <h3>RENT — PER CUBIC CHUNK, PER DAY</h3>
       <div class="tablewrap"><table>
         <tr><th>LAYER</th><th>HEIGHT</th><th class="num">COST</th></tr>
         <tr><td>Sky</td><td>96 → 320</td><td class="num">6 SBT</td></tr>
         <tr><td>Sea level</td><td>48 → 96</td><td class="num">3 SBT</td></tr>
         <tr><td>Stone</td><td>0 → 48</td><td class="num">2 SBT</td></tr>
         <tr><td>Deepslate</td><td>-64 → 0</td><td class="num">1 SBT</td></tr>
+        <tr><td>Nether</td><td>Anywhere</td><td class="num">32 nether warts</td></tr>
       </table></div>
-      <p style="margin-top:10px">Building high is expensive on purpose. The Nether charges <b>32 nether warts</b> per cube per day. The End can't be claimed.</p>
     </div>
+
     <div class="panel">
-      <h3>DEADLINE</h3>
-      <p>Any unpaid debt at <b>Sunday 18:00 GMT</b> deletes the whole base. Check with <code>/claim</code> and shrink with <code>/unclaim</code> if rent is outrunning your farm.</p>
+      <h3>ADDING FRIENDS</h3>
+      <p>To add your friends: <code>/claim trust &lt;player&gt; &lt;rank&gt;</code></p>
+    </div>
+
+    <div class="panel">
+      <h3>INTER-CLAIM RANKS</h3>
+      <div class="tablewrap"><table class="ranks">
+        <tr><th>RANK</th><th>EXPIRES</th><th>DOORS, BUTTONS, BOATS</th><th>BUILD &amp; BREAK</th><th>CHESTS</th><th>RENT BARREL &amp; MEMBERS</th></tr>
+        <tr><td>Visitor</td><td>24 hours</td><td class="yes">✔</td><td class="no">✘</td><td class="no">✘</td><td class="no">✘</td></tr>
+        <tr><td>PermVisitor</td><td>Never</td><td class="yes">✔</td><td class="no">✘</td><td class="no">✘</td><td class="no">✘</td></tr>
+        <tr><td>Member</td><td>Never</td><td class="yes">✔</td><td class="yes">✔</td><td class="yes">✔</td><td class="no">✘</td></tr>
+        <tr><td>Trusted</td><td>Never</td><td class="yes">✔</td><td class="yes">✔</td><td class="yes">✔</td><td class="yes">✔</td></tr>
+      </table></div>
+    </div>
+
+    <div class="panel">
+      <h3>VULNERABILITIES</h3>
+      <ul>
+        <li>Your crops can be trampled.</li>
+        <li>Your wood can be burned.</li>
+        <li>Water and lava can be placed.</li>
+      </ul>
+      <p style="margin-top:10px">Use <code>/co i</code> to investigate for yourself!</p>
+    </div>
+
+    <div class="panel">
+      <h3>CURRENCY</h3>
+      <p>Money is <b>Shmeckle Block Tokens</b> (SBT) — pumpkins, reskinned as gold bullion by the server pack. No virtual balance, no <code>/pay</code>: you hold your wealth, and trade happens face to face. Some in-game messages still call them pumpkins.</p>
+      <p>Pumpkin seeds are <b>Shmeckle Shmackers</b>. Melons and their seeds belong to <a href="/stratis">Stratis</a>.</p>
     </div>
   </section>
 
-  <section class="block" id="ranks">
-    <h2>RANKS INSIDE CLAIMS</h2>
-    <div class="grid2">
-      <div class="panel"><h3>VISITOR · 24 HOURS</h3><p>Doors, gates, buttons, levers, boats and minecarts. Can't build, break or open chests. Cleans itself up the next day.</p></div>
-      <div class="panel"><h3>PERMVISITOR · NEVER EXPIRES</h3><p>Same as a Visitor, set once and left alone — for neighbours with a standing invitation.</p></div>
-      <div class="panel"><h3>MEMBER</h3><p>Build, break and open storage. Can't touch the rent barrel, the member list, or unclaim.</p></div>
-      <div class="panel"><h3>TRUSTED · FULL CONTROL</h3><p>Rent barrel, members, renaming and unclaiming. Only for someone you'd trust with all of it.</p></div>
+  <section class="block" id="live">
+    <h2>ALTIS LEADERBOARDS</h2>
+    <div class="boards">
+      <div class="board"><h3>BIGGEST BASES</h3><ol id="b-bases"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3>TOP SHOPKEEPERS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
     </div>
-    <div class="panel"><p>Anyone can still place water, trample crops, or build directly above your base — plan around it.</p></div>
+    <div class="updated" id="updated"></div>
   </section>
 
   <section class="block" id="seeds">
@@ -200,13 +264,8 @@ OW2.live().then(d => {
   const a = d.altis || {};
   OW2.board('b-bases', a.bases, 'cubes');
   OW2.board('b-shops', a.shops, 'SBT');
-  OW2.board('b-play', a.playtime, 'h');
-  OW2.board('b-mobs', a.mobKills, '');
-  OW2.online(d); OW2.stamp(d);
-}).catch(() => {
-  ['b-bases', 'b-shops', 'b-play', 'b-mobs'].forEach(id => OW2.board(id, []));
-  document.getElementById('online').innerHTML = '<span style="border-color:var(--muted);background:none">Live data unavailable</span>';
-});
+  OW2.stamp(d);
+}).catch(() => { ['b-bases', 'b-shops'].forEach(id => OW2.board(id, [])); });
 </script>
 </body>
 </html>
