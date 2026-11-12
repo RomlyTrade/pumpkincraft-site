@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Altis · OceanWorld2</title>
 <meta name="description" content="Altis, the main island of OceanWorld2: cubic claims, rent, drowning, bosses, raid sites and live leaderboards.">
-<link rel="icon" href="/main-island.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/ow2.css?v=5">
+<link rel="stylesheet" href="/assets/ow2.css?v=6">
 </head>
 <body>
 <canvas id="water" width="16" height="16"></canvas>
@@ -17,8 +19,7 @@
 
 <main>
   <div class="topbar">
-    <a class="back" href="/">◂ OCEANWORLD2</a>
-    <button class="ip-btn small" data-copy="oceanworld2.com">oceanworld2.com</button>
+    <a class="back" href="/">HOME</a>
   </div>
   <div class="copied" id="copied"></div>
 
@@ -26,8 +27,7 @@
     <img src="/main-island.png" alt="Altis">
     <div class="hero-text">
       <h1>ALTIS</h1>
-      <p>The main island. The world is a grid of 16×16×16 cubes that you claim, protect and pay rent on.</p>
-      <p>Everyone can see who broke, placed or opened any block, and anyone can drown a player off the island for good.</p>
+      <p>Suitable for living, building and trading.</p>
     </div>
   </section>
 
@@ -252,7 +252,7 @@
 </main>
 <footer>Prices and rules can change.</footer>
 
-<script src="/assets/ow2.js?v=5"></script>
+<script src="/assets/ow2.js?v=6"></script>
 <script>
 OW2.live().then(d => {
   const a = d.altis || {};
