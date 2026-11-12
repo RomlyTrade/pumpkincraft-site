@@ -56,16 +56,16 @@
         <rect x="0" y="42" width="96" height="22" fill="#7d7d7d"/>
         <g fill="#6b6b6b"><rect x="6" y="46" width="2" height="1"/><rect x="30" y="58" width="3" height="1"/><rect x="70" y="47" width="2" height="1"/><rect x="85" y="60" width="2" height="1"/><rect x="50" y="61" width="2" height="1"/></g>
         <!-- mining tunnel under the claim -->
-        <rect x="0" y="52" width="96" height="6" fill="#2b2b2b"/>
+        <rect x="0" y="54" width="96" height="4" fill="#2b2b2b"/>
         <rect x="0" y="58" width="96" height="1" fill="#555"/>
-        <g fill="#ffd34d"><rect x="22" y="53" width="1" height="2"/><rect x="74" y="53" width="1" height="2"/></g>
+        <g fill="#ffd34d"><rect x="24" y="54.5" width="0.6" height="1.2"/><rect x="74" y="54.5" width="0.6" height="1.2"/></g>
         <!-- bridge over the claim -->
         <rect x="0" y="12" width="96" height="2" fill="#a9824a"/>
         <g fill="#8a6634"><rect x="8" y="12" width="1" height="2"/><rect x="24" y="12" width="1" height="2"/><rect x="40" y="12" width="1" height="2"/><rect x="56" y="12" width="1" height="2"/><rect x="72" y="12" width="1" height="2"/><rect x="88" y="12" width="1" height="2"/></g>
         <!-- the claim: 16 x 16 -->
-        <rect x="40" y="25.5" width="16" height="16" fill="rgba(255,214,90,0.18)" stroke="#ffd65a" stroke-width="0.6" stroke-dasharray="1.2 0.8"/>
+        <rect x="32" y="20" width="32" height="32" fill="rgba(255,214,90,0.18)" stroke="#ffd65a" stroke-width="0.6" stroke-dasharray="1.6 1"/>
         <!-- Steve inside the claim -->
-        <g transform="translate(46,28)">
+        <g transform="translate(47,32) scale(0.5)">
           <rect x="0" y="0" width="4" height="1" fill="#4a2f1a"/>
           <rect x="0" y="1" width="4" height="2" fill="#c8946a"/>
           <rect x="1" y="1.5" width="0.6" height="0.6" fill="#3b3bdb"/><rect x="2.4" y="1.5" width="0.6" height="0.6" fill="#3b3bdb"/>
@@ -75,7 +75,7 @@
           <rect x="0" y="7.5" width="1.6" height="0.5" fill="#555"/><rect x="2.4" y="7.5" width="1.6" height="0.5" fill="#555"/>
         </g>
         <!-- player bridging over -->
-        <g transform="translate(66,4)">
+        <g transform="translate(72,8) scale(0.5)">
           <rect x="0" y="0" width="3" height="1" fill="#2b1d10"/>
           <rect x="0" y="1" width="3" height="2" fill="#b5835a"/>
           <rect x="-0.5" y="3" width="4" height="3" fill="#c0392b"/>
@@ -83,19 +83,13 @@
           <rect x="3.5" y="3.5" width="2" height="2" fill="#a9824a"/>
         </g>
         <!-- player mining under -->
-        <g transform="translate(14,50)">
+        <g transform="translate(14,54) scale(0.5)">
           <rect x="0" y="0" width="3" height="1" fill="#e0c060"/>
           <rect x="0" y="1" width="3" height="2" fill="#d9a77a"/>
           <rect x="-0.5" y="3" width="4" height="2.5" fill="#6a3fa0"/>
           <rect x="0" y="5.5" width="3" height="2.5" fill="#2e4d2e"/>
           <rect x="4" y="2" width="1" height="4" fill="#8a6634"/>
           <rect x="3" y="1" width="4" height="1" fill="#6fd3d3"/>
-        </g>
-        <!-- labels -->
-        <g font-family="'Press Start 2P', monospace" font-size="2.6" fill="#fff" stroke="#020818" stroke-width="0.5" paint-order="stroke">
-          <text x="48" y="24" text-anchor="middle">YOUR CLAIM 16×16×16</text>
-          <text x="48" y="19" text-anchor="middle">BUILDING ABOVE</text>
-          <text x="48" y="51" text-anchor="middle">MINING BELOW</text>
         </g>
       </svg>
       <figcaption>Players can build above, below and around this perimeter.</figcaption>
