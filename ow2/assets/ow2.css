@@ -144,3 +144,15 @@ footer { position: relative; z-index: 2; text-align: center; color: var(--muted)
 table.ranks td.yes { color: #8fffa8; text-align: center; }
 table.ranks td.no { color: var(--red); text-align: center; }
 table.ranks th:nth-child(n+3) { text-align: center; }
+
+/* Y-level rent diagram */
+.ylevels { border: 3px solid var(--shadow); }
+.yl { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; text-shadow: 2px 2px 0 var(--shadow); }
+.yl .y { font-family: 'Press Start 2P', monospace; font-size: 11px; color: #fff; white-space: nowrap; }
+.yl .cost { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.yl .cost i { width: 24px; height: 24px; background: url(/assets/sbt.png) center / contain no-repeat; image-rendering: pixelated; filter: drop-shadow(1px 1px 0 var(--shadow)); }
+.yl .cost b { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #ffe9a0; margin-left: 6px; min-width: 18px; text-align: right; }
+.yl.sky { background: #7ea8ff; padding: 30px 16px; }
+.yl.sea { background: linear-gradient(#5daa3a 0 12%, #8a5a33 12%); }
+.yl.stone { background: #7d7d7d; }
+.yl.deep { background: #3d3d48; }

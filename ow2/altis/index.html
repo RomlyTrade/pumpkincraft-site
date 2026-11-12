@@ -32,9 +32,9 @@
   </section>
 
   <nav class="jump">
-    <a href="#claims">CLAIMS &amp; CURRENCY</a><a href="#live">LEADERBOARDS</a>
+    <a href="#claims">CLAIMS &amp; CURRENCY</a>
     <a href="#seeds">SEEDS</a><a href="#shops">SHOPS</a><a href="#bosses">BOSSES</a><a href="#raids">RAIDS</a>
-    <a href="#drowning">DROWNING</a><a href="#rules">RULES</a><a href="#commands">COMMANDS</a><a href="#screenshots">SCREENSHOTS</a><a href="#map">MAP</a>
+    <a href="#drowned">DROWNED</a><a href="#rules">RULES</a><a href="#commands">COMMANDS</a>
   </nav>
 
   <section class="block" id="claims">
@@ -102,14 +102,13 @@
 
     <div class="panel">
       <h3>RENT — PER CUBIC CHUNK, PER DAY</h3>
-      <div class="tablewrap"><table>
-        <tr><th>LAYER</th><th>HEIGHT</th><th class="num">COST</th></tr>
-        <tr><td>Sky</td><td>96 → 320</td><td class="num">6 SBT</td></tr>
-        <tr><td>Sea level</td><td>48 → 96</td><td class="num">3 SBT</td></tr>
-        <tr><td>Stone</td><td>0 → 48</td><td class="num">2 SBT</td></tr>
-        <tr><td>Deepslate</td><td>-64 → 0</td><td class="num">1 SBT</td></tr>
-        <tr><td>Nether</td><td>Anywhere</td><td class="num">32 nether warts</td></tr>
-      </table></div>
+      <div class="ylevels">
+        <div class="yl sky"><span class="y">96 → 320</span><span class="cost"><i></i><i></i><i></i><i></i><i></i><i></i><b>6</b></span></div>
+        <div class="yl sea"><span class="y">48 → 96</span><span class="cost"><i></i><i></i><i></i><b>3</b></span></div>
+        <div class="yl stone"><span class="y">0 → 48</span><span class="cost"><i></i><i></i><b>2</b></span></div>
+        <div class="yl deep"><span class="y">-64 → 0</span><span class="cost"><i></i><b>1</b></span></div>
+      </div>
+      <p style="margin-top:10px">Nether: 32 nether warts, anywhere.</p>
     </div>
 
     <div class="panel">
@@ -185,8 +184,8 @@
     </div>
   </section>
 
-  <section class="block" id="drowning">
-    <h2>DROWNING</h2>
+  <section class="block" id="drowned">
+    <h2>DROWNED</h2>
     <div class="grid2">
       <div class="panel"><h3>TAKE SOMEONE'S AIR</h3><p><code>/drown &lt;player&gt;</code> costs <b>640 SBT</b>. They surface somewhere deep and cold with a mangrove propagule, two sea lanterns and a furnace.</p></div>
       <div class="panel"><h3>BUY YOUR LUNGS BACK</h3><p><code>/buyout</code> with <b>1024 dried kelp blocks</b> in your inventory and you're returned to your bed.</p></div>
@@ -219,38 +218,14 @@
       <tr><td><code>/co i</code></td><td>Detective mode — who broke, placed or opened anything</td></tr>
       <tr><td><code>/drown &lt;player&gt;</code> · <code>/buyout</code></td><td>Drown someone · buy your way out</td></tr>
       <tr><td><code>/achievement</code></td><td>Your first steps and what they pay</td></tr>
+      <tr><td><code>/imageframe create &lt;title&gt; &lt;image url&gt; &lt;width&gt; &lt;height&gt; combined</code></td><td>Put a picture on a wall of item frames, sized in blocks</td></tr>
     </table></div>
     <div class="panel"><p>Right-click a claim holding a <b>stick</b> to see who owns it, what's in the rent barrel and whether it's in debt.</p></div>
   </section>
 
-  <section class="block" id="screenshots">
-    <h2>SCREENSHOTS</h2>
-    <div class="gallery">
-      <a href="https://pumpkincraft.net/piimg1.png"><img src="https://pumpkincraft.net/piimg1.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg2.png"><img src="https://pumpkincraft.net/piimg2.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg3.png"><img src="https://pumpkincraft.net/piimg3.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg4.png"><img src="https://pumpkincraft.net/piimg4.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg5.png"><img src="https://pumpkincraft.net/piimg5.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg6.png"><img src="https://pumpkincraft.net/piimg6.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg7.png"><img src="https://pumpkincraft.net/piimg7.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg8.png"><img src="https://pumpkincraft.net/piimg8.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/piimg9.png"><img src="https://pumpkincraft.net/piimg9.png" alt="Altis" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/baimg1.png"><img src="https://pumpkincraft.net/baimg1.png" alt="Boss arena" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/baimg2.png"><img src="https://pumpkincraft.net/baimg2.png" alt="Boss arena" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/baimg3.png"><img src="https://pumpkincraft.net/baimg3.png" alt="Boss arena" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/rsimg1.png"><img src="https://pumpkincraft.net/rsimg1.png" alt="Raid site" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/rsimg2.png"><img src="https://pumpkincraft.net/rsimg2.png" alt="Raid site" loading="lazy"></a>
-      <a href="https://pumpkincraft.net/drimg1.png"><img src="https://pumpkincraft.net/drimg1.png" alt="Drowned" loading="lazy"></a>
-    </div>
-  </section>
 
-  <section class="block" id="map">
-    <h2>LIVE MAP</h2>
-    <iframe class="mapframe" src="https://map.oceanworld2.com/#world:430:64:450:1100:0:0.01:0:0:perspective" title="Live map of Altis" loading="lazy"></iframe>
-  </section>
 </main>
 <footer>Prices and rules can change.</footer>
-<div class="lightbox"><img alt=""></div>
 
 <script src="/assets/ow2.js"></script>
 <script>
