@@ -236,3 +236,4 @@ table.claimed td { font-size: 24px; }
 table.claimed td b { color: #1e1200; font-size: 28px; }
 table.claimed tr:last-child td { border-bottom: none; }
 table.claimed td:first-child { text-align: left; }
+table.claimed td { vertical-align: middle; }
