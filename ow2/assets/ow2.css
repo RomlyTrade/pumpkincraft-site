@@ -167,3 +167,10 @@ svg.slice { width: 100%; height: auto; display: block; border: 3px solid var(--s
 .layer-stats li span:nth-child(2) { color: #ffe9a0; font-size: 26px; }
 .layer-stats li span:nth-child(3) { color: var(--muted); }
 @media (max-width: 600px) { .layer-stats { grid-template-columns: repeat(2, 1fr); } }
+
+.layer-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 18px; }
+.layer-stats li { background: none; border: none; padding: 0; display: block; }
+.layer-stats li b { color: #ffe9a0; font-weight: normal; }
+ol.steps { margin: 0; padding-left: 26px; }
+ol.steps li { margin: 4px 0; }
+img.drowned-art { width: 100%; height: auto; display: block; margin: 14px 0; border: 3px solid var(--edge); box-shadow: 4px 4px 0 var(--shadow); image-rendering: pixelated; }
