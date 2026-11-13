@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DASSOM · OceanWorld2</title>
+<meta name="description" content="DASSOM: Menachem's reward posts for OceanWorld2.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ow2.css?v=7">
+<style>
+  .topbar { justify-content: center; }
+  .phone-wrap { display: flex; justify-content: center; padding: 10px 0 40px; }
+  /* the phone: orange pixel body, stepped corners, dark screen */
+  .phone {
+    --o: #ff7a1a; --ol: #ffa452; --od: #c9560e;
+    width: min(400px, 94vw); height: min(780px, calc(100vh - 110px)); min-height: 520px;
+    background: var(--o); padding: 16px 14px 22px; position: relative;
+    clip-path: polygon(0 12px, 4px 12px, 4px 8px, 8px 8px, 8px 4px, 12px 4px, 12px 0, calc(100% - 12px) 0, calc(100% - 12px) 4px, calc(100% - 8px) 4px, calc(100% - 8px) 8px, calc(100% - 4px) 8px, calc(100% - 4px) 12px, 100% 12px,
+      100% calc(100% - 12px), calc(100% - 4px) calc(100% - 12px), calc(100% - 4px) calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) calc(100% - 4px), calc(100% - 12px) 100%,
+      12px 100%, 12px calc(100% - 4px), 8px calc(100% - 4px), 8px calc(100% - 8px), 4px calc(100% - 8px), 4px calc(100% - 12px), 0 calc(100% - 12px));
+    box-shadow: inset 6px 6px 0 var(--ol), inset -6px -6px 0 var(--od);
+  }
+  .screen { background: #15202b; height: 100%; display: flex; flex-direction: column; overflow: hidden; border: 4px solid #0a0d14; }
+  .notch { position: absolute; top: 4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; background: #0a0d14; }
+  .app-head { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 0 10px; border-bottom: 1px solid #2f3d4d; flex: none; }
+  .app-head img { width: 32px; height: 32px; image-rendering: pixelated; }
+  .app-head span { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #1d9bf0; letter-spacing: 1px; }
+  .feed { overflow-y: auto; flex: 1; scrollbar-width: thin; scrollbar-color: #2f3d4d transparent; }
+  .post { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #2f3d4d; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; image-rendering: pixelated; flex: none; background: #b5e3ff; }
+  .post .who { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #f4f8ff; margin: 2px 0 6px; }
+  .post .who em { font-style: normal; color: #8899a6; font-size: 8px; margin-left: 6px; }
+  .post p { margin: 0; font-family: 'VT323', monospace; font-size: 21px; line-height: 1.15; color: #e7ecf0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .empty { padding: 30px 16px; text-align: center; font-family: 'VT323', monospace; font-size: 20px; color: #8899a6; }
+</style>
+</head>
+<body>
+<canvas id="water" width="16" height="16"></canvas>
+<div class="shade"></div>
+
+<main>
+  <div class="topbar"><a class="back" href="/">HOME</a></div>
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="app-head"><img id="logo" alt=""><span>DASSOM</span></div>
+        <div class="feed" id="feed"><div class="empty">Loading…</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/assets/ow2.js?v=7"></script>
+<script src="/assets/dassom-art.js?v=2"></script>
+<script>
+document.getElementById('logo').src = DASSOM.image(DASSOM.gorilla, 2);
+const avatar = DASSOM.image(DASSOM.menachem, 4);
+function ago(iso) {
+  const s = Math.max(0, (Date.now() - new Date(iso)) / 1000);
+  if (s < 60) return 'now';
+  if (s < 3600) return Math.floor(s / 60) + 'm';
+  if (s < 86400) return Math.floor(s / 3600) + 'h';
+  if (s < 86400 * 7) return Math.floor(s / 86400) + 'd';
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+fetch('/dassom/posts.json', { cache: 'no-store' }).then(r => r.json()).then(posts => {
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const feed = document.getElementById('feed');
+  feed.innerHTML = posts.length ? posts.map(p => '<div class="post"><img class="avatar" src="' + avatar + '" alt="">'
+    + '<div><div class="who">Menachem<em>' + ago(p.date) + '</em></div><p>' + esc(p.text) + '</p></div></div>').join('')
+    : '<div class="empty">No posts yet</div>';
+}).catch(() => { document.getElementById('feed').innerHTML = '<div class="empty">Couldn\'t load posts</div>'; });
+</script>
+</body>
+</html>
