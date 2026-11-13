@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/ow2.css?v=6">
+<link rel="stylesheet" href="/assets/ow2.css?v=7">
 </head>
 <body>
 <canvas id="water" width="16" height="16"></canvas>
@@ -172,7 +172,7 @@
     <h2>ALTIS LEADERBOARDS</h2>
     <div class="boards">
       <div class="board"><h3>BIGGEST BASES</h3><ol id="b-bases"><li class="empty">Loading…</li></ol></div>
-      <div class="board"><h3 id="shops-title">BIGGEST SHOPS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3 id="shops-title">TOP EARNERS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
     </div>
     <div class="updated" id="updated"></div>
   </section>
@@ -252,13 +252,12 @@
 </main>
 <footer>Prices and rules can change.</footer>
 
-<script src="/assets/ow2.js?v=6"></script>
+<script src="/assets/ow2.js?v=7"></script>
 <script>
 OW2.live().then(d => {
   const a = d.altis || {};
   OW2.board('b-bases', a.bases, 'cubes');
-  if (a.shopItems) OW2.board('b-shops', a.shopItems, 'items');
-  else { document.getElementById('shops-title').textContent = 'TOP SHOPKEEPERS'; OW2.board('b-shops', a.shops, 'SBT'); }
+  OW2.board('b-shops', a.shops, 'SBT');
   const L = a.layers || {};
   ['sky', 'sea', 'stone', 'deepslate'].forEach(k => { const el = document.getElementById('ly-' + k); if (el && L[k] != null) el.textContent = OW2.fmt(L[k]); });
   OW2.stamp(d);
