@@ -51,21 +51,22 @@
     display: flex; flex-direction: column; align-items: center; gap: 10px;
     text-align: center;
   }
-  .ip-row {
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
+  .logo { margin: 0; line-height: 0; }
+  .logo img { width: min(640px, 92vw); height: auto; filter: drop-shadow(4px 4px 0 var(--shadow)); }
+  .ip-line {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;
   }
   .ip-label {
-    font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--muted);
+    font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--muted);
     text-shadow: 2px 2px 0 var(--shadow); letter-spacing: 1px;
   }
   .ip-btn {
     font-family: 'Press Start 2P', monospace; color: var(--ink);
-    background: var(--panel); border: 3px solid var(--edge);
-    box-shadow: 4px 4px 0 var(--shadow);
-    padding: 14px 18px; cursor: pointer; font-size: clamp(14px, 3.4vw, 26px);
+    background: var(--panel); border: 2px solid var(--edge);
+    box-shadow: 3px 3px 0 var(--shadow);
+    padding: 7px 10px; cursor: pointer; font-size: clamp(9px, 2.4vw, 12px);
     text-shadow: 2px 2px 0 var(--shadow);
   }
-  .ip-btn.small { font-size: clamp(10px, 2.2vw, 14px); padding: 10px 14px; border-width: 2px; }
   .ip-btn:hover { background: rgba(20, 50, 120, 0.85); }
   .ip-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow); }
   .copied {
@@ -154,14 +155,9 @@
 
 <main>
   <section class="ip">
-    <div class="ip-row">
-      <span class="ip-label">JAVA</span>
-      <button class="ip-btn" data-copy="oceanworld2.com">oceanworld2.com</button>
-    </div>
-    <div class="ip-row">
-      <span class="ip-label">BEDROCK</span>
-      <button class="ip-btn small" data-copy="play.oceanworld2.com">play.oceanworld2.com : 19132</button>
-    </div>
+    <h1 class="logo"><img src="/assets/ow2-logo.png" alt="OceanWorld2" width="1100" height="261"></h1>
+    <div class="ip-line"><span class="ip-label">JAVA:</span> <button class="ip-btn" data-copy="oceanworld2.com">oceanworld2.com</button></div>
+    <div class="ip-line"><span class="ip-label">BEDROCK:</span> <button class="ip-btn" data-copy="play.oceanworld2.com">play.oceanworld2.com</button> <span class="ip-label">PORT:</span> <button class="ip-btn" data-copy="19132">19132</button></div>
     <div class="copied" id="copied"></div>
   </section>
 
