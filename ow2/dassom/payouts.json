@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "date": "2026-11-14T15:42:00Z",
+    "to": "Spalmipede",
+    "amount": 576,
+    "for": "Contract: clear and restore",
+    "kind": "trade"
+  }
+]
