@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBT · OceanWorld2</title>
+<meta name="description" content="Shmeckle Block Tokens (SBT), the currency of OceanWorld2: what they're for, how to earn them, and every kind.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ow2.css?v=7">
+<style>
+  .sbt-hero { display: flex; align-items: center; gap: 22px; justify-content: center; flex-wrap: wrap; text-align: center; }
+  .sbt-hero h1 { margin: 0; font-family: 'Press Start 2P', monospace; font-size: clamp(18px, 4.5vw, 34px); text-shadow: 4px 4px 0 var(--shadow); }
+  .sbt-hero h1 span { color: var(--gold); }
+  .spin { width: 96px; height: 96px; perspective: 400px; flex: none; }
+  .spin img { width: 100%; height: 100%; image-rendering: pixelated; animation: spin 3s linear infinite; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.45)); }
+  @keyframes spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+  .panel ul.list { list-style: none; padding: 0; margin: 0; }
+  .panel ul.list li { padding: 6px 0 6px 26px; position: relative; font-size: 24px; border-bottom: 1px dashed rgba(127,220,255,0.25); }
+  .panel ul.list li:last-child { border-bottom: none; }
+  .panel ul.list li::before { content: ''; position: absolute; left: 0; top: 13px; width: 14px; height: 14px; background: url(/assets/sbt.png) center / contain no-repeat; image-rendering: pixelated; }
+  table.kinds td { vertical-align: middle; padding: 12px 10px; font-size: 22px; }
+  table.kinds td.icon { width: 64px; }
+  table.kinds td.icon img { width: 48px; height: 48px; image-rendering: pixelated; display: block; }
+  table.kinds .name { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #ffe9a0; line-height: 1.6; margin-bottom: 4px; }
+  @media (max-width: 560px) { table.kinds td { font-size: 20px; } table.kinds .name { font-size: 10px; } }
+</style>
+</head>
+<body>
+<canvas id="water" width="16" height="16"></canvas>
+<div class="shade"></div>
+<main>
+  <div class="topbar"><a class="back" href="/">HOME</a></div>
+
+  <section class="sbt-hero">
+    <div class="spin"><img src="/assets/sbt.png" alt=""></div>
+    <h1>Shmeckle Block Token <span>- SBT</span></h1>
+  </section>
+
+  <section class="block">
+    <div class="panel">
+      <ul class="list">
+        <li>Used for paying for claims &amp; plots.</li>
+        <li>Used for player to player trade.</li>
+        <li>Used to summon bosses.</li>
+        <li>Used to enforce <code>/drown</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>HOW TO EARN SHMECKLE BLOCK TOKENS?</h2>
+    <div class="panel">
+      <ul class="list">
+        <li>Complete missions from Menachem on <a href="/dassom/">DASSOM</a>.</li>
+        <li>Open a shop selling in-demand items.</li>
+        <li>Farm them yourself using your Shmeckle Shmackers, grow your farm with <code>/seed</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>EVERY KIND OF SBT</h2>
+    <div class="panel tablewrap">
+      <table class="kinds">
+        <tr><td class="icon"><img src="/assets/sbt.png" alt=""></td><td><div class="name">Shmeckle Block Token</div>Main currency.</td></tr>
+        <tr><td class="icon"><img src="/assets/shuper.png" alt=""></td><td><div class="name">Shuper Shmeckle</div>1,728 SBTs (a single chest) in one.</td></tr>
+        <tr><td class="icon"><img src="/assets/frozen.png" alt=""></td><td><div class="name">Frozen Shmeckle Block Token</div>Frozen and delicate form of SBT. Can be broken by pistons, which enables auto farming.</td></tr>
+        <tr><td class="icon"><img src="/assets/shmackaroon.png" alt=""></td><td><div class="name">Shmackaroons</div>Fragments of the Frozen SBT.</td></tr>
+        <tr><td class="icon"><img src="/assets/cracked.png" alt=""></td><td><div class="name">Broken Shmeckle Block Token</div>Needs to be smelted before turning into a usable Shmeckle Block Token.</td></tr>
+      </table>
+    </div>
+  </section>
+</main>
+<script src="/assets/ow2.js?v=7"></script>
+</body>
+</html>
