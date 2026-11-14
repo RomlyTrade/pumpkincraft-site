@@ -36,6 +36,8 @@
   .post .who { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #f4f8ff; margin: 2px 0 6px; }
   .post .who em { font-style: normal; color: #8899a6; font-size: 8px; margin-left: 6px; }
   .post p { margin: 0; font-family: 'VT323', monospace; font-size: 21px; line-height: 1.15; color: #e7ecf0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .post .pic { display: block; margin-top: 8px; }
+  .post .pic img { display: block; width: 100%; border-radius: 10px; border: 1px solid #2f3d4d; }
   .empty { padding: 30px 16px; text-align: center; font-family: 'VT323', monospace; font-size: 20px; color: #8899a6; }
 </style>
 </head>
@@ -74,7 +76,9 @@ fetch('/dassom/posts.json', { cache: 'no-store' }).then(r => r.json()).then(post
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   const feed = document.getElementById('feed');
   feed.innerHTML = posts.length ? posts.map(p => '<div class="post"><img class="avatar" src="' + avatar + '" alt="">'
-    + '<div><div class="who">Menachem<em>' + ago(p.date) + '</em></div><p>' + esc(p.text) + '</p></div></div>').join('')
+    + '<div><div class="who">Menachem<em>' + ago(p.date) + '</em></div><p>' + esc(p.text) + '</p>'
+    + (p.image ? '<a class="pic" href="' + esc(p.image) + '" target="_blank" rel="noopener"><img src="' + esc(p.image) + '" alt="" loading="lazy"></a>' : '')
+    + '</div></div>').join('')
     : '<div class="empty">No posts yet</div>';
 }).catch(() => { document.getElementById('feed').innerHTML = '<div class="empty">Couldn\'t load posts</div>'; });
 </script>
