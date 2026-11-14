@@ -72,7 +72,7 @@ function ago(iso) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 }
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-fetch('/dassom/posts.json', { cache: 'no-store' }).then(r => r.json()).then(posts => {
+fetch('/dassom/posts.json?t=' + Date.now(), { cache: 'no-store' }).then(r => r.json()).then(posts => {
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   const feed = document.getElementById('feed');
   feed.innerHTML = posts.length ? posts.map(p => '<div class="post"><img class="avatar" src="' + avatar + '" alt="">'
