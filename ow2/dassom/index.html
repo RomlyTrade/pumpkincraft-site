@@ -35,15 +35,23 @@
   .post { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #2f3d4d; }
   .avatar { width: 44px; height: 44px; border-radius: 50%; image-rendering: pixelated; flex: none; background: #b5e3ff; }
   .post .who { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #f4f8ff; margin: 2px 0 6px; }
+  .post .who a { color: inherit; text-decoration: none; }
+  .post .who a:hover { text-decoration: underline; }
   .post .who em { font-style: normal; color: #8899a6; font-size: 8px; margin-left: 6px; }
   .post p { margin: 0; font-family: 'VT323', monospace; font-size: 21px; line-height: 1.15; color: #e7ecf0; white-space: pre-wrap; overflow-wrap: anywhere; }
   .post .pic { display: block; margin-top: 8px; }
   .post .pic img { display: block; width: 100%; border-radius: 10px; border: 1px solid #2f3d4d; }
-  .whats { display: flex; justify-content: center; margin: -22px 0 40px; }
-  .whats a { display: inline-flex; align-items: center; gap: 12px; font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--ink); text-decoration: none; text-shadow: 2px 2px 0 var(--shadow); }
+  .phone-wrap { position: relative; }
+  .whats { position: absolute; top: 50%; left: calc(50% + min(400px, 94vw) / 2 + 22px); transform: translateY(-50%); }
+  .whats a { display: inline-flex; flex-direction: column-reverse; align-items: center; text-align: center; gap: 16px; font-family: 'Press Start 2P', monospace; font-size: 14px; line-height: 1.6; color: var(--ink); text-decoration: none; text-shadow: 2px 2px 0 var(--shadow); }
   .whats a:hover { color: var(--gold); }
-  .whats .coin { width: 32px; height: 32px; perspective: 200px; }
-  .whats .coin img { width: 100%; height: 100%; image-rendering: pixelated; animation: coin 3s linear infinite; }
+  .whats .sbt-cube { --s: 64px !important; }
+  @media (max-width: 780px) {
+    .phone-wrap { flex-direction: column; align-items: center; }
+    .whats { position: static; transform: none; margin: 18px 0 0; }
+    .whats a { flex-direction: row; gap: 12px; font-size: 12px; }
+    .whats .sbt-cube { --s: 32px !important; }
+  }
   @keyframes coin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
   .empty { padding: 30px 16px; text-align: center; font-family: 'VT323', monospace; font-size: 20px; color: #8899a6; }
 </style>
@@ -62,8 +70,8 @@
         <div class="feed" id="feed"><div class="empty">Loading…</div></div>
       </div>
     </div>
+    <div class="whats"><a href="/sbt/">What's SBT? <span class="sbt-cube" style="--s:26px"><span class="c"><i></i><i></i><i></i><i></i><i></i><i></i></span></span></a></div>
   </div>
-  <div class="whats"><a href="/sbt/">What's SBT? <span class="sbt-cube" style="--s:26px"><span class="c"><i></i><i></i><i></i><i></i><i></i><i></i></span></span></a></div>
 </main>
 
 <script src="/assets/ow2.js?v=7"></script>
@@ -83,8 +91,8 @@ const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 fetch('/dassom/posts.json?t=' + Date.now(), { cache: 'no-store' }).then(r => r.json()).then(posts => {
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   const feed = document.getElementById('feed');
-  feed.innerHTML = posts.length ? posts.map(p => '<div class="post"><img class="avatar" src="' + avatar + '" alt="">'
-    + '<div><div class="who">Menachem<em>' + ago(p.date) + '</em></div><p>' + esc(p.text) + '</p>'
+  feed.innerHTML = posts.length ? posts.map(p => '<div class="post"><a href="/dassom/menachem/"><img class="avatar" src="' + avatar + '" alt="Menachem\'s profile"></a>'
+    + '<div><div class="who"><a href="/dassom/menachem/">Menachem</a><em>' + ago(p.date) + '</em></div><p>' + esc(p.text) + '</p>'
     + (p.image ? '<a class="pic" href="' + esc(p.image) + '" target="_blank" rel="noopener"><img src="' + esc(p.image) + '" alt="" loading="lazy"></a>' : '')
     + '</div></div>').join('')
     : '<div class="empty">No posts yet</div>';
