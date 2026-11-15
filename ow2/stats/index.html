@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats · OceanWorld2</title>
+<meta name="description" content="OceanWorld2 server stats: SBT in circulation day by day, and the player leaderboards.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ow2.css?v=7">
+<style>
+  h1.title { margin: 0; text-align: center; font-family: 'Press Start 2P', monospace; font-size: clamp(18px, 4.5vw, 30px); text-shadow: 4px 4px 0 var(--shadow); }
+  .now { text-align: center; margin-top: 10px; }
+  .now b { font-family: 'Press Start 2P', monospace; color: #f5b82e; font-size: clamp(16px, 4vw, 26px); text-shadow: 3px 3px 0 var(--shadow); }
+  .now span { display: block; color: var(--muted); margin-top: 6px; }
+  .chart { position: relative; width: 100%; height: 280px; }
+  .chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .chart .axis { font-family: 'VT323', monospace; font-size: 16px; fill: var(--muted); }
+  .chart .tip { position: absolute; pointer-events: none; background: #0a1a44; border: 2px solid #f5b82e; padding: 4px 8px; font-size: 20px; white-space: nowrap; transform: translate(-50%, -110%); display: none; }
+  .key { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 8px; font-size: 20px; color: var(--muted); }
+  .key i { display: inline-block; width: 14px; height: 14px; margin-right: 6px; vertical-align: -1px; }
+  .boards { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .boards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .boards { grid-template-columns: 1fr; } .chart { height: 220px; } }
+</style>
+</head>
+<body>
+<canvas id="water" width="16" height="16"></canvas>
+<div class="shade"></div>
+<main>
+  <div class="topbar"><a class="back" href="/">HOME</a></div>
+
+  <section class="block">
+    <h1 class="title">SERVER STATS</h1>
+    <div class="now"><b id="total">…</b><span>SBT in circulation right now</span></div>
+  </section>
+
+  <section class="block">
+    <h2>SBT IN CIRCULATION, DAY BY DAY</h2>
+    <div class="panel">
+      <div class="chart" id="chart"><div class="tip" id="tip"></div></div>
+      <div class="key"><span><i style="background:#f5b82e"></i>Total</span><span><i style="background:#1d9bf0"></i>Menachem Funds</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>LEADERBOARDS</h2>
+    <div class="boards" id="boards"></div>
+    <div class="updated" id="updated"></div>
+  </section>
+</main>
+<script src="/assets/ow2.js?v=7"></script>
+<script>
+(function () {
+  const fmt = n => Number(n).toLocaleString('en-GB');
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const day = d => new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+  function chart(hist) {
+    const box = document.getElementById('chart');
+    if (!hist.length) { box.insertAdjacentHTML('beforeend', '<div class="empty">The first day is being recorded now.</div>'); return; }
+    const W = 1000, H = 280, L = 70, R = 14, T = 12, B = 30;
+    const max = Math.max(1, ...hist.map(h => h.total)) * 1.08;
+    const x = i => hist.length === 1 ? L + (W - L - R) / 2 : L + i * (W - L - R) / (hist.length - 1);
+    const y = v => T + (H - T - B) * (1 - v / max);
+    let g = '';
+    for (let k = 0; k <= 4; k++) {
+      const v = max * k / 4;
+      g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="rgba(127,220,255,0.15)"/>';
+      g += '<text class="axis" x="' + (L - 8) + '" y="' + (y(v) + 5) + '" text-anchor="end">' + fmt(Math.round(v)) + '</text>';
+    }
+    const step = Math.max(1, Math.ceil(hist.length / 8));
+    hist.forEach((h, i) => { if (i % step === 0 || i === hist.length - 1) g += '<text class="axis" x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle">' + day(h.date) + '</text>'; });
+    const line = (key, color) => {
+      const pts = hist.map((h, i) => x(i) + ',' + y(h[key])).join(' ');
+      return '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="4" stroke-linejoin="round"/>' +
+        hist.map((h, i) => '<rect x="' + (x(i) - 5) + '" y="' + (y(h[key]) - 5) + '" width="10" height="10" fill="' + color + '"/>').join('');
+    };
+    const area = '<polygon points="' + x(0) + ',' + y(0) + ' ' + hist.map((h, i) => x(i) + ',' + y(h.total)).join(' ') + ' ' + x(hist.length - 1) + ',' + y(0) + '" fill="rgba(245,184,46,0.15)"/>';
+    const hits = hist.map((h, i) => '<rect data-i="' + i + '" x="' + (x(i) - 20) + '" y="' + T + '" width="40" height="' + (H - T - B) + '" fill="transparent"/>').join('');
+    box.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' + g + area + line('menachem', '#1d9bf0') + line('total', '#f5b82e') + hits + '</svg>');
+    const tip = document.getElementById('tip');
+    box.querySelectorAll('[data-i]').forEach(r => {
+      r.addEventListener('mouseenter', () => {
+        const h = hist[+r.dataset.i];
+        tip.innerHTML = day(h.date) + ': <b style="color:#f5b82e">' + fmt(h.total) + '</b> SBT';
+        const rect = box.getBoundingClientRect(), rr = r.getBoundingClientRect();
+        tip.style.left = (rr.left + rr.width / 2 - rect.left) + 'px';
+        tip.style.top = (y(h.total) / H * rect.height) + 'px';
+        tip.style.display = 'block';
+      });
+      r.addEventListener('mouseleave', () => tip.style.display = 'none');
+    });
+  }
+
+  fetch('/data/census.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    document.getElementById('total').textContent = fmt(d.total) + ' SBT';
+    chart(d.history || []);
+  }).catch(() => { document.getElementById('total').textContent = '—'; });
+
+  fetch('/data/stats.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    document.getElementById('boards').innerHTML = d.boards.map(b =>
+      '<div class="board"><h3>' + esc(b.title.toUpperCase()) + '</h3><ol>' +
+      (b.rows.length ? b.rows.map(r => '<li><span class="who">' + esc(r.name) + '</span><span class="val">' + fmt(r.value) + ' ' + esc(b.unit) + '</span></li>').join('')
+                     : '<li class="empty">No entries yet</li>') + '</ol></div>').join('');
+    document.getElementById('updated').textContent = 'Updated ' + new Date(d.updated).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' }) + ' · refreshes every 20 minutes';
+  }).catch(() => { document.getElementById('boards').innerHTML = '<div class="empty">Stats unavailable right now</div>'; });
+})();
+</script>
+</body>
+</html>

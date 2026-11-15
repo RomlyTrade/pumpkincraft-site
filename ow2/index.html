@@ -128,6 +128,27 @@
   }
   .w-lists a:hover { color: var(--list); }
 
+  /* SBT in circulation */
+  .census { width: 100%; display: flex; justify-content: center; }
+  .census a { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; justify-content: center;
+    background: var(--panel); border: 3px solid #f5b82e; box-shadow: 4px 4px 0 var(--shadow);
+    padding: 18px 22px; color: var(--ink); text-decoration: none; max-width: 760px; width: 100%; }
+  .census a:hover { background: rgba(20, 50, 120, 0.85); }
+  .donut { position: relative; width: 220px; height: 220px; flex: none; }
+  .donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .donut .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .donut .tot { font-family: 'Press Start 2P', monospace; font-weight: bold; color: #f5b82e; font-size: 17px; text-shadow: 2px 2px 0 var(--shadow); }
+  .donut .lbl { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .pie { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: none; }
+  .chests { font-size: 21px; color: var(--muted); text-align: center; }
+  .chests b { color: #f5b82e; }
+  .legend { flex: 1; min-width: 220px; }
+  .legend h2 { margin: 0 0 10px; font-family: 'Press Start 2P', monospace; font-size: 12px; color: #f5b82e; text-shadow: 2px 2px 0 var(--shadow); }
+  #sbt-legend > div { display: flex; align-items: center; gap: 10px; padding: 2px 0; font-size: 21px; }
+  .legend i { width: 14px; height: 14px; flex: none; }
+  .legend .who { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend .val { color: #ffe9a0; white-space: nowrap; }
+  .legend .go { font-family: 'Press Start 2P', monospace; font-size: 10px; margin-top: 10px; }
 
   /* Server-wide leaderboards */
   .boards { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -172,6 +193,13 @@
     </a>
   </section>
 
+  <section class="census">
+    <a href="/stats/">
+      <div class="pie"><div class="donut"><svg viewBox="0 0 42 42" id="donut"></svg><div class="mid"><div class="tot" id="sbt-total">…</div><div class="lbl">SBT IN<br>CIRCULATION</div></div></div><div class="chests" id="sbt-chests"></div></div>
+      <div class="legend"><h2>WHO HOLDS THE SBT</h2><div id="sbt-legend"></div><div class="go">FULL STATS ▸</div></div>
+    </a>
+  </section>
+
   <section class="widgets">
     <a class="widget w-discord" href="https://discord.com/invite/hs8AwWnSQr" target="_blank" rel="noopener">
       <h2>DISCORD</h2>
@@ -179,9 +207,9 @@
       <div class="sub" id="dc-members">&nbsp;</div>
       <div class="go">JOIN ▸</div>
     </a>
-    <a class="widget w-reddit" href="https://www.reddit.com/r/PumpkinCraft/" target="_blank" rel="noopener">
+    <a class="widget w-reddit" href="https://www.reddit.com/r/oceanworld2/" target="_blank" rel="noopener">
       <h2>REDDIT</h2>
-      <div class="big">r/PumpkinCraft</div>
+      <div class="big">r/oceanworld2</div>
       <div class="sub" id="rd-members">&nbsp;</div>
       <div class="go">VISIT ▸</div>
     </a>
@@ -277,7 +305,7 @@ fetch('https://discord.com/api/v9/invites/hs8AwWnSQr?with_counts=true')
     document.getElementById('dc-online').innerHTML = '<span class="dot"></span>' + fmt(j.approximate_presence_count) + ' online';
     document.getElementById('dc-members').textContent = fmt(j.approximate_member_count) + ' members';
   }).catch(() => {});
-fetch('https://www.reddit.com/r/PumpkinCraft/about.json')
+fetch('https://www.reddit.com/r/oceanworld2/about.json')
   .then(r => r.json()).then(j => {
     const n = j && j.data && j.data.subscribers;
     if (n != null) document.getElementById('rd-members').textContent = fmt(n) + ' members';
@@ -290,6 +318,33 @@ fetch('https://api.mcsrvstat.us/3/oceanworld2.com')
       p.textContent = j.players.online + ' / ' + j.players.max + ' players';
     } else s.innerHTML = '<span class="dot off"></span>Offline';
   }).catch(() => { document.getElementById('sv-status').textContent = ''; });
+/* ---- SBT in circulation ---- */
+(function () {
+  const COLORS = ['#f5b82e', '#ff7a45', '#3fdc6a', '#e85d9a', '#a07cff', '#2ec4b6', '#ffd166'];
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  fetch('/data/census.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    document.getElementById('sbt-total').textContent = fmt(d.total);
+    const dc = Math.floor(d.total / 3456);
+    document.getElementById('sbt-chests').innerHTML = '<b>' + fmt(dc) + '</b> full double chest' + (dc === 1 ? '' : 's') + ' of SBT';
+    const slices = [{ name: 'Menachem Funds', value: d.menachem, color: '#1d9bf0' }];
+    const top = d.holders.slice(0, COLORS.length);
+    top.forEach((h, i) => slices.push({ name: h.name, value: h.value, color: COLORS[i] }));
+    const rest = d.holders.slice(COLORS.length).reduce((a, h) => a + h.value, 0);
+    if (rest > 0) slices.push({ name: 'Everyone else', value: rest, color: '#6b7a99' });
+    const sum = slices.reduce((a, s) => a + s.value, 0) || 1;
+    const C = 2 * Math.PI * 15.915;
+    let off = 0, svg = '<circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>';
+    slices.forEach(s => {
+      const len = s.value / sum * C;
+      if (len <= 0) return;
+      svg += '<circle cx="21" cy="21" r="15.915" fill="none" stroke="' + s.color + '" stroke-width="6" stroke-dasharray="' + len + ' ' + (C - len) + '" stroke-dashoffset="' + (-off) + '"/>';
+      off += len;
+    });
+    document.getElementById('donut').innerHTML = svg;
+    document.getElementById('sbt-legend').innerHTML = slices.map(s =>
+      '<div><i style="background:' + s.color + '"></i><span class="who">' + esc(s.name) + '</span><span class="val">' + fmt(s.value) + '</span></div>').join('');
+  }).catch(() => { document.getElementById('sbt-total').textContent = '—'; });
+})();
 /* ---- Server-wide leaderboards ---- */
 (function () {
   const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
