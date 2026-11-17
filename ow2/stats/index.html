@@ -68,26 +68,36 @@
   function chart(hist) {
     const box = document.getElementById('chart');
     if (!hist.length) { box.insertAdjacentHTML('beforeend', '<div class="empty">The first day is being recorded now.</div>'); return; }
-    const W = 1000, H = 280, L = 70, R = 14, T = 12, B = 30;
-    const max = Math.max(1, ...hist.map(h => h.total)) * 1.08;
+    const W = 1000, H = 280, L = 80, R = 80, T = 12, B = 30;
+    // each line gets its own zoomed scale, so day-to-day growth is easy to see
+    const range = key => {
+      const v = hist.map(h => h[key]);
+      let lo = Math.min(...v), hi = Math.max(...v);
+      const pad = Math.max((hi - lo) * 0.25, hi * 0.01, 1);
+      return [Math.max(0, lo - pad), hi + pad];
+    };
+    const rt = range('total'), rm = range('menachem');
     const x = i => hist.length === 1 ? L + (W - L - R) / 2 : L + i * (W - L - R) / (hist.length - 1);
-    const y = v => T + (H - T - B) * (1 - v / max);
+    const y = (v, r) => T + (H - T - B) * (1 - (v - r[0]) / (r[1] - r[0]));
     let g = '';
     for (let k = 0; k <= 4; k++) {
-      const v = max * k / 4;
-      g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="rgba(127,220,255,0.15)"/>';
-      g += '<text class="axis" x="' + (L - 8) + '" y="' + (y(v) + 5) + '" text-anchor="end">' + fmt(Math.round(v)) + '</text>';
+      const yy = T + (H - T - B) * k / 4;
+      const vt = rt[1] - (rt[1] - rt[0]) * k / 4, vm = rm[1] - (rm[1] - rm[0]) * k / 4;
+      g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '" stroke="rgba(127,220,255,0.15)"/>';
+      g += '<text class="axis" x="' + (L - 8) + '" y="' + (yy + 5) + '" text-anchor="end" style="fill:#f5b82e">' + fmt(Math.round(vt)) + '</text>';
+      g += '<text class="axis" x="' + (W - R + 8) + '" y="' + (yy + 5) + '" text-anchor="start" style="fill:#1d9bf0">' + fmt(Math.round(vm)) + '</text>';
     }
     const step = Math.max(1, Math.ceil(hist.length / 8));
     hist.forEach((h, i) => { if (i % step === 0 || i === hist.length - 1) g += '<text class="axis" x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle">' + day(h.date) + '</text>'; });
-    const line = (key, color) => {
-      const pts = hist.map((h, i) => x(i) + ',' + y(h[key])).join(' ');
+    const line = (key, r, color) => {
+      const pts = hist.map((h, i) => x(i) + ',' + y(h[key], r)).join(' ');
       return '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="4" stroke-linejoin="round"/>' +
-        hist.map((h, i) => '<rect x="' + (x(i) - 5) + '" y="' + (y(h[key]) - 5) + '" width="10" height="10" fill="' + color + '"/>').join('');
+        hist.map((h, i) => '<rect x="' + (x(i) - 5) + '" y="' + (y(h[key], r) - 5) + '" width="10" height="10" fill="' + color + '"/>').join('');
     };
-    const area = '<polygon points="' + x(0) + ',' + y(0) + ' ' + hist.map((h, i) => x(i) + ',' + y(h.total)).join(' ') + ' ' + x(hist.length - 1) + ',' + y(0) + '" fill="rgba(245,184,46,0.15)"/>';
+    const base = H - B;
+    const area = '<polygon points="' + x(0) + ',' + base + ' ' + hist.map((h, i) => x(i) + ',' + y(h.total, rt)).join(' ') + ' ' + x(hist.length - 1) + ',' + base + '" fill="rgba(245,184,46,0.15)"/>';
     const hits = hist.map((h, i) => '<rect data-i="' + i + '" x="' + (x(i) - 20) + '" y="' + T + '" width="40" height="' + (H - T - B) + '" fill="transparent"/>').join('');
-    box.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' + g + area + line('menachem', '#1d9bf0') + line('total', '#f5b82e') + hits + '</svg>');
+    box.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' + g + area + line('menachem', rm, '#1d9bf0') + line('total', rt, '#f5b82e') + hits + '</svg>');
     const tip = document.getElementById('tip');
     box.querySelectorAll('[data-i]').forEach(r => {
       r.addEventListener('mouseenter', () => {
@@ -95,7 +105,7 @@
         tip.innerHTML = day(h.date) + ': <b style="color:#f5b82e">' + fmt(h.total) + '</b> <img src="/assets/sbt.png" style="width:16px;height:16px;image-rendering:pixelated;vertical-align:-2px" alt="SBT">';
         const rect = box.getBoundingClientRect(), rr = r.getBoundingClientRect();
         tip.style.left = (rr.left + rr.width / 2 - rect.left) + 'px';
-        tip.style.top = (y(h.total) / H * rect.height) + 'px';
+        tip.style.top = (y(h.total, rt) / H * rect.height) + 'px';
         tip.style.display = 'block';
       });
       r.addEventListener('mouseleave', () => tip.style.display = 'none');
