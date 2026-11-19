@@ -1,0 +1,1937 @@
+{
+ "format_version": 1,
+ "blocks": {
+  "minecraft:pumpkin_stem": {
+   "name": "ow2_brass_pipe",
+   "display_name": "Brass Feed Pipe",
+   "geometry": "geometry.ow2_pipe_16",
+   "material_instances": {
+    "*": {
+     "texture": "ow2_pipe_brass_7",
+     "render_method": "alpha_test"
+    }
+   },
+   "light_dampening": 0,
+   "included_in_creative_inventory": false,
+   "state_overrides": {
+    "age=0": {
+     "geometry": "geometry.ow2_pipe_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_0",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       2,
+       6
+      ]
+     }
+    },
+    "age=1": {
+     "geometry": "geometry.ow2_pipe_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_1",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       4,
+       6
+      ]
+     }
+    },
+    "age=2": {
+     "geometry": "geometry.ow2_pipe_6",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_2",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       6,
+       6
+      ]
+     }
+    },
+    "age=3": {
+     "geometry": "geometry.ow2_pipe_8",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_3",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       8,
+       6
+      ]
+     }
+    },
+    "age=4": {
+     "geometry": "geometry.ow2_pipe_10",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_4",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       10,
+       6
+      ]
+     }
+    },
+    "age=5": {
+     "geometry": "geometry.ow2_pipe_12",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_5",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       12,
+       6
+      ]
+     }
+    },
+    "age=6": {
+     "geometry": "geometry.ow2_pipe_14",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_6",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       14,
+       6
+      ]
+     }
+    },
+    "age=7": {
+     "geometry": "geometry.ow2_pipe_16",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_brass_7",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_brass",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       16,
+       6
+      ]
+     }
+    }
+   }
+  },
+  "minecraft:melon_stem": {
+   "name": "ow2_copper_pipe",
+   "display_name": "Copper Feed Pipe",
+   "geometry": "geometry.ow2_pipe_16",
+   "material_instances": {
+    "*": {
+     "texture": "ow2_pipe_copper_7",
+     "render_method": "alpha_test"
+    }
+   },
+   "light_dampening": 0,
+   "included_in_creative_inventory": false,
+   "state_overrides": {
+    "age=0": {
+     "geometry": "geometry.ow2_pipe_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_0",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       2,
+       6
+      ]
+     }
+    },
+    "age=1": {
+     "geometry": "geometry.ow2_pipe_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_1",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       4,
+       6
+      ]
+     }
+    },
+    "age=2": {
+     "geometry": "geometry.ow2_pipe_6",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_2",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       6,
+       6
+      ]
+     }
+    },
+    "age=3": {
+     "geometry": "geometry.ow2_pipe_8",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_3",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       8,
+       6
+      ]
+     }
+    },
+    "age=4": {
+     "geometry": "geometry.ow2_pipe_10",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_4",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       10,
+       6
+      ]
+     }
+    },
+    "age=5": {
+     "geometry": "geometry.ow2_pipe_12",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_5",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       12,
+       6
+      ]
+     }
+    },
+    "age=6": {
+     "geometry": "geometry.ow2_pipe_14",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_6",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       14,
+       6
+      ]
+     }
+    },
+    "age=7": {
+     "geometry": "geometry.ow2_pipe_16",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pipe_copper_7",
+       "render_method": "alpha_test",
+       "face_dimming": true,
+       "ambient_occlusion": false
+      },
+      "up": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      },
+      "down": {
+       "texture": "ow2_pipe_top_copper",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       0,
+       0,
+       0
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -3,
+       0,
+       -3
+      ],
+      "size": [
+       6,
+       16,
+       6
+      ]
+     }
+    }
+   }
+  },
+  "minecraft:brown_candle": {
+   "name": "ow2_pile_bronze",
+   "display_name": "Bronze Coins",
+   "geometry": "geometry.ow2_pile_1",
+   "material_instances": {
+    "*": {
+     "texture": "ow2_pile_bronze_side",
+     "render_method": "alpha_test"
+    }
+   },
+   "light_dampening": 0,
+   "included_in_creative_inventory": false,
+   "state_overrides": {
+    "candles=1,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_bronze_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_bronze_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    }
+   }
+  },
+  "minecraft:light_gray_candle": {
+   "name": "ow2_pile_silver",
+   "display_name": "Silver Coins",
+   "geometry": "geometry.ow2_pile_1",
+   "material_instances": {
+    "*": {
+     "texture": "ow2_pile_silver_side",
+     "render_method": "alpha_test"
+    }
+   },
+   "light_dampening": 0,
+   "included_in_creative_inventory": false,
+   "state_overrides": {
+    "candles=1,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=1,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_1",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=2,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_2",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=3,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_3",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=false,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=false,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=true,waterlogged=false": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    },
+    "candles=4,lit=true,waterlogged=true": {
+     "geometry": "geometry.ow2_pile_4",
+     "material_instances": {
+      "*": {
+       "texture": "ow2_pile_silver_side",
+       "render_method": "alpha_test"
+      },
+      "up": {
+       "texture": "ow2_pile_silver_top",
+       "render_method": "alpha_test"
+      }
+     },
+     "collision_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       3,
+       14
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -7,
+       0,
+       -7
+      ],
+      "size": [
+       14,
+       7,
+       14
+      ]
+     }
+    }
+   }
+  }
+ }
+}

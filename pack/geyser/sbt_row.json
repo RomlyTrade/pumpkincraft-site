@@ -1,0 +1,184 @@
+{
+ "format_version": 1,
+ "blocks": {
+  "minecraft:petrified_oak_slab": {
+   "name": "sbt_row",
+   "display_name": "Gold Coin",
+   "geometry": "geometry.ow2_slab_bottom",
+   "material_instances": {
+    "*": {
+     "texture": "ow2_sbt_row",
+     "render_method": "opaque",
+     "face_dimming": true,
+     "ambient_occlusion": true
+    }
+   },
+   "light_dampening": 0,
+   "included_in_creative_inventory": false,
+   "state_overrides": {
+    "type=bottom,waterlogged=false": {
+     "geometry": "geometry.ow2_slab_bottom",
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     }
+    },
+    "type=top,waterlogged=false": {
+     "geometry": "geometry.ow2_slab_top",
+     "collision_box": {
+      "origin": [
+       -8,
+       8,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       8,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     }
+    },
+    "type=double,waterlogged=false": {
+     "geometry": "minecraft:geometry.full_block",
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       16,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       16,
+       16
+      ]
+     }
+    },
+    "type=bottom,waterlogged=true": {
+     "geometry": "geometry.ow2_slab_bottom",
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     }
+    },
+    "type=top,waterlogged=true": {
+     "geometry": "geometry.ow2_slab_top",
+     "collision_box": {
+      "origin": [
+       -8,
+       8,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       8,
+       -8
+      ],
+      "size": [
+       16,
+       8,
+       16
+      ]
+     }
+    },
+    "type=double,waterlogged=true": {
+     "geometry": "minecraft:geometry.full_block",
+     "collision_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       16,
+       16
+      ]
+     },
+     "selection_box": {
+      "origin": [
+       -8,
+       0,
+       -8
+      ],
+      "size": [
+       16,
+       16,
+       16
+      ]
+     }
+    }
+   }
+  }
+ }
+}
