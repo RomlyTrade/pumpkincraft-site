@@ -128,7 +128,7 @@
   }
   .w-lists a:hover { color: var(--list); }
 
-  /* SBT in circulation */
+  /* silver in circulation */
   .census { width: 100%; display: flex; justify-content: center; }
   .census a { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; justify-content: center;
     background: var(--panel); border: 3px solid #f5b82e; box-shadow: 4px 4px 0 var(--shadow);
@@ -199,8 +199,8 @@
 
   <section class="census">
     <a href="/stats/">
-      <div class="pie"><div class="donut"><svg viewBox="0 0 42 42" id="donut"></svg><div class="mid"><div class="tot" id="sbt-total">…</div><img class="lbl-ico" src="/assets/sbt.png" alt="SBT"></div></div><div class="chests" id="sbt-chests"></div></div>
-      <div class="legend"><h2>WHO HOLDS THE SBT</h2><div id="sbt-legend"></div><div class="go">FULL STATS ▸</div></div>
+      <div class="pie"><div class="donut"><svg viewBox="0 0 42 42" id="donut"></svg><div class="mid"><div class="tot" id="sbt-total">…</div><img class="lbl-ico" src="/assets/coin-silver.png" alt="silver"></div></div><div class="chests" id="sbt-chests"></div></div>
+      <div class="legend"><h2>WHO HOLDS THE SILVER</h2><div id="sbt-legend"></div><div class="go">FULL STATS ▸</div></div>
     </a>
   </section>
 
@@ -224,7 +224,7 @@
       <div class="go">OPEN MAP ▸</div>
     </a>
     <div class="widget w-lists">
-      <h2>VOTE FOR 32 SBT</h2>
+      <h2>VOTE FOR 32 SILVER</h2>
       <div id="lists"></div>
     </div>
   </section>
@@ -319,14 +319,14 @@ fetch('https://api.mcsrvstat.us/3/oceanworld2.com')
       p.textContent = j.players.online + ' / ' + j.players.max + ' players';
     } else s.innerHTML = '<span class="dot off"></span>Offline';
   }).catch(() => { document.getElementById('sv-status').textContent = ''; });
-/* ---- SBT in circulation ---- */
+/* ---- silver in circulation ---- */
 (function () {
   const COLORS = ['#f5b82e', '#ff7a45', '#3fdc6a', '#e85d9a', '#a07cff', '#2ec4b6', '#ffd166'];
   const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   fetch('/data/census.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
     document.getElementById('sbt-total').textContent = fmt(d.total);
     const dc = Math.floor(d.total / 3456);
-    document.getElementById('sbt-chests').innerHTML = '<b>' + fmt(dc) + '</b> <span class="x">×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of SBT">';
+    document.getElementById('sbt-chests').innerHTML = '<b>' + fmt(dc) + '</b> <span class="x">×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of silver">';
     const slices = [{ name: 'Menachem Funds', value: d.menachem, color: '#1d9bf0' }];
     const top = d.holders.slice(0, COLORS.length);
     top.forEach((h, i) => slices.push({ name: h.name, value: h.value, color: COLORS[i] }));

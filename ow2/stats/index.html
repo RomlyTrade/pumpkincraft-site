@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stats · OceanWorld2</title>
-<meta name="description" content="OceanWorld2 server stats: SBT in circulation day by day, and the player leaderboards.">
+<meta name="description" content="OceanWorld2 server stats: silver in circulation day by day, and the player leaderboards.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -41,11 +41,11 @@
 
   <section class="block">
     <h1 class="title">SERVER STATS</h1>
-    <div class="now"><div class="tot"><b id="total">…</b><img src="/assets/sbt.png" alt="SBT" class="ico"></div><div class="dc"><b id="chests">…</b> <span>×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of SBT" class="chest"></div></div>
+    <div class="now"><div class="tot"><b id="total">…</b><img src="/assets/coin-silver.png" alt="silver" class="ico"></div><div class="dc"><b id="chests">…</b> <span>×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of silver" class="chest"></div></div>
   </section>
 
   <section class="block">
-    <h2>SBT IN CIRCULATION, DAY BY DAY</h2>
+    <h2>SILVER IN CIRCULATION, DAY BY DAY</h2>
     <div class="panel">
       <div class="chart" id="chart"><div class="tip" id="tip"></div></div>
       <div class="key"><span><i style="background:#f5b82e"></i>Total</span><span><i style="background:#1d9bf0"></i>Menachem Funds</span></div>
@@ -102,7 +102,7 @@
     box.querySelectorAll('[data-i]').forEach(r => {
       r.addEventListener('mouseenter', () => {
         const h = hist[+r.dataset.i];
-        tip.innerHTML = day(h.date) + ': <b style="color:#f5b82e">' + fmt(h.total) + '</b> <img src="/assets/sbt.png" style="width:16px;height:16px;image-rendering:pixelated;vertical-align:-2px" alt="SBT">';
+        tip.innerHTML = day(h.date) + ': <b style="color:#f5b82e">' + fmt(h.total) + '</b> <img src="/assets/coin-silver.png" style="width:16px;height:16px;image-rendering:pixelated;vertical-align:-2px" alt="silver">';
         const rect = box.getBoundingClientRect(), rr = r.getBoundingClientRect();
         tip.style.left = (rr.left + rr.width / 2 - rect.left) + 'px';
         tip.style.top = (y(h.total, rt) / H * rect.height) + 'px';
@@ -121,7 +121,7 @@
   fetch('/data/stats.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
     document.getElementById('boards').innerHTML = d.boards.map(b =>
       '<div class="board"><h3>' + esc(b.title.toUpperCase()) + '</h3><ol>' +
-      (b.rows.length ? b.rows.map(r => '<li><span class="who">' + esc(r.name) + '</span><span class="val">' + fmt(r.value) + ' ' + (b.unit === 'SBT' ? '<img class="u" src="/assets/sbt.png" alt="SBT">' : esc(b.unit)) + '</span></li>').join('')
+      (b.rows.length ? b.rows.map(r => '<li><span class="who">' + esc(r.name) + '</span><span class="val">' + fmt(r.value) + ' ' + ((b.unit === 'SBT' || b.unit === 'silver') ? '<img class="u" src="/assets/coin-silver.png" alt="silver">' : esc(b.unit)) + '</span></li>').join('')
                      : '<li class="empty">No entries yet</li>') + '</ol></div>').join('');
     document.getElementById('updated').textContent = 'Updated ' + new Date(d.updated).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' }) + ' · refreshes every 20 minutes';
   }).catch(() => { document.getElementById('boards').innerHTML = '<div class="empty">Stats unavailable right now</div>'; });

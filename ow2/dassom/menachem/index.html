@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Menachem · DASSOM</title>
-<meta name="description" content="Menachem's live bank statement: every SBT in and out of the DASSOM fund.">
+<meta name="description" content="Menachem's live bank statement: every silver in and out of the DASSOM fund.">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -100,10 +100,10 @@ function ago(ms) {
 const n = v => Math.abs(v).toLocaleString('en-GB');
 function load() {
   fetch('/data/menachem.json?t=' + Date.now(), { cache: 'no-store' }).then(r => { if (!r.ok) throw 0; return r.json(); }).then(d => {
-    document.getElementById('balance').textContent = d.balance.toLocaleString('en-GB') + ' SBT';
+    document.getElementById('balance').textContent = d.balance.toLocaleString('en-GB') + ' silver';
     document.getElementById('statement').innerHTML = d.entries.length ? d.entries.map(e =>
       '<div class="tx"><span class="when">' + ago(e.t) + '</span>'
-      + '<span class="amt ' + (e.a >= 0 ? 'in' : 'out') + '">' + n(e.a) + ' SBT ' + (e.a >= 0 ? 'IN' : 'OUT') + '</span>'
+      + '<span class="amt ' + (e.a >= 0 ? 'in' : 'out') + '">' + n(e.a) + ' silver ' + (e.a >= 0 ? 'IN' : 'OUT') + '</span>'
       + '<span class="what">' + esc(e.x) + (e.n > 1 ? ' ×' + e.n : '') + '</span></div>').join('')
       : '<div class="empty">No transactions yet</div>';
   }).catch(() => { document.getElementById('statement').innerHTML = '<div class="empty">Statement unavailable right now</div>'; });
