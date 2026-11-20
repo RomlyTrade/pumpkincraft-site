@@ -69,7 +69,7 @@ window.OW2 = {
     if (!el) return;
     if (!rows || !rows.length) { el.innerHTML = '<li class="empty">No entries yet</li>'; return; }
     el.innerHTML = rows.map(r => '<li><span class="who">' + OW2.esc(r.label ? r.label + ' — ' + r.name : r.name)
-      + '</span><span class="val">' + OW2.fmt(r.value) + (unit ? ' ' + unit : '') + '</span></li>').join('');
+      + '</span><span class="val">' + OW2.fmt(r.value) + (unit === 'silver' ? ' <img src="/assets/coin-silver.png" alt="silver" style="width:16px;height:16px;image-rendering:pixelated;vertical-align:-3px">' : unit ? ' ' + unit : '') + '</span></li>').join('');
   },
   stamp(d) {
     const el = document.getElementById('updated');
