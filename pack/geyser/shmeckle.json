@@ -1,0 +1,63 @@
+{
+  "format_version": 2,
+  "items": {
+    "minecraft:gold_nugget": [
+      {
+        "type": "definition",
+        "model": "shmeckle:broken_token",
+        "bedrock_identifier": "ow2:cracked_token",
+        "display_name": "Cracked Silver Coin",
+        "bedrock_options": {
+          "icon": "ow2_cracked_token",
+          "allow_offhand": true
+        }
+      },
+      {
+        "type": "definition",
+        "model": "shmeckle:shuper_shmeckle",
+        "bedrock_identifier": "ow2:shuper_shmeckle",
+        "display_name": "Platinum Coin",
+        "bedrock_options": {
+          "icon": "ow2_shuper_shmeckle",
+          "allow_offhand": true
+        }
+      }
+    ],
+    "minecraft:sunflower": [
+      {
+        "type": "definition",
+        "model": "shmeckle:wheel_token",
+        "bedrock_identifier": "ow2:wheel_token",
+        "display_name": "Wheel Token",
+        "bedrock_options": {
+          "icon": "ow2_wheel_token",
+          "allow_offhand": true
+        }
+      }
+    ],
+    "minecraft:pumpkin": [
+      {
+        "type": "definition",
+        "model": "shmeckle:coin_silver",
+        "bedrock_identifier": "ow2:silver_coin",
+        "display_name": "Silver Coin",
+        "bedrock_options": {
+          "icon": "ow2_silver_coin",
+          "allow_offhand": true
+        }
+      }
+    ],
+    "minecraft:petrified_oak_slab": [
+      {
+        "type": "definition",
+        "model": "shmeckle:coin_gold",
+        "bedrock_identifier": "ow2:gold_coin",
+        "display_name": "Gold Coin",
+        "bedrock_options": {
+          "icon": "ow2_gold_coin",
+          "allow_offhand": true
+        }
+      }
+    ]
+  }
+}
