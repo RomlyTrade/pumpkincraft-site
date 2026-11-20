@@ -1,45 +1,50 @@
 [
-  {
-    "date": "2026-11-13T23:45:00Z",
-    "text": "Welcome to DASSOM! I'll be posting rewards here for building, destroying and trading. Check back often."
-  },
-  {
-    "date": "2026-11-14T01:45:00Z",
-    "text": "Reward: 2,048 silver to clear and restore the areas in red.",
-    "image": "/dassom/img/clear-restore-1.jpg"
-  },
-  {
-    "date": "2026-11-14T12:33:00Z",
-    "text": "Reward: 1 Gold Coin (576 silver) to clear and restore the areas highlighted in red.",
-    "image": "/dassom/img/clear-restore-2-done.jpg"
-  },
-  {
-    "date": "2026-11-14T15:37:00Z",
-    "text": "Congrats to Spalmipede on Oceanworld2's first ever contract!",
-    "image": "/dassom/img/first-contract.jpg"
-  },
-  {
-    "date": "2026-11-15T00:59:00Z",
-    "text": "REWARD: 1152 silver\nDeforest and reforest.\nAlso:\n- Landscape a pond\n- Leave two wide spaces open and flat without trees to encourage base building\n- Demolish the old abandoned base, relay plants and saplings, with a nice stone feature to remember that a player lived there once <3",
-    "image": "/dassom/img/deforest-reforest.jpg"
-  },
-  {
-    "date": "2026-11-15T17:06:00Z",
-    "text": "WE NEED BLUE ICE.\nThe iceboat network won't build itself, and I'm not slipping around on dirt.\nSell blue ice from your player shop and I'll pay you an extra 32 silver on top, for every block.\nFreeze water in a snowy biome, Silk Touch the ice, and compress it. 9 ice makes packed ice, and 9 packed makes blue.\n5 days only."
-  },
-  {
-    "date": "2026-11-16T01:21:00Z",
-    "text": "Triple Whammy: Destroy and landscape, all 3 for 1152 silver.",
-    "image": "/dassom/img/triple-whammy.jpg"
-  },
-  {
-    "date": "2026-11-17T15:04:00Z",
-    "text": "REWARD DOUBLED: now 2,048 silver to clear and restore the areas in red.",
-    "image": "/dassom/img/clear-restore-1.jpg"
-  },
-  {
-    "date": "2026-11-18T12:14:00Z",
-    "text": "The court vote is in: Upgrade wins, 6 votes to 2.\nReward: 1,728 silver (3 Gold Coins) to build the upgrade.",
-    "image": "/dassom/img/court-upgrade-concept.jpg"
-  }
+ {
+  "date": "2026-11-13T23:45:00Z",
+  "text": "Welcome to DASSOM! I'll be posting rewards here for building, destroying and trading. Check back often."
+ },
+ {
+  "date": "2026-11-14T01:45:00Z",
+  "text": "Reward: 2,048 silver to clear and restore the areas in red.",
+  "image": "/dassom/img/clear-restore-1.jpg"
+ },
+ {
+  "date": "2026-11-14T12:33:00Z",
+  "text": "Reward: 1 Gold Coin (576 silver) to clear and restore the areas highlighted in red.",
+  "image": "/dassom/img/clear-restore-2-done.jpg"
+ },
+ {
+  "date": "2026-11-14T15:37:00Z",
+  "text": "Congrats to Spalmipede on Oceanworld2's first ever contract!",
+  "image": "/dassom/img/first-contract.jpg"
+ },
+ {
+  "date": "2026-11-15T00:59:00Z",
+  "text": "REWARD: 1152 silver\nDeforest and reforest.\nAlso:\n- Landscape a pond\n- Leave two wide spaces open and flat without trees to encourage base building\n- Demolish the old abandoned base, relay plants and saplings, with a nice stone feature to remember that a player lived there once <3",
+  "image": "/dassom/img/deforest-reforest.jpg"
+ },
+ {
+  "date": "2026-11-15T17:06:00Z",
+  "text": "WE NEED BLUE ICE.\nThe iceboat network won't build itself, and I'm not slipping around on dirt.\nSell blue ice from your player shop and I'll pay you an extra 32 silver on top, for every block.\nFreeze water in a snowy biome, Silk Touch the ice, and compress it. 9 ice makes packed ice, and 9 packed makes blue.\n5 days only."
+ },
+ {
+  "date": "2026-11-16T01:21:00Z",
+  "text": "Triple Whammy: Destroy and landscape, all 3 for 1152 silver.",
+  "image": "/dassom/img/triple-whammy.jpg"
+ },
+ {
+  "date": "2026-11-17T15:04:00Z",
+  "text": "REWARD DOUBLED: now 2,048 silver to clear and restore the areas in red.",
+  "image": "/dassom/img/clear-restore-1.jpg"
+ },
+ {
+  "date": "2026-11-18T12:14:00Z",
+  "text": "The court vote is in: Upgrade wins, 6 votes to 2.\nReward: 1,728 silver (3 Gold Coins) to build the upgrade.",
+  "image": "/dassom/img/court-upgrade-concept.jpg"
+ },
+ {
+  "date": "2026-11-20T17:03:00Z",
+  "text": "Build your own vaults and get cozy! Because coins no longer go in chests.\nThey are places inside of your vault.\nMake sure it's locked up tight!",
+  "image": "/dassom/img/vaults.jpg"
+ }
 ]
