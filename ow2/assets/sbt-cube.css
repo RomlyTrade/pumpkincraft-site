@@ -1,12 +1,13 @@
-/* A spinning Shmeckle Block Token: a real CSS 3D cube, side texture on four faces, top texture on top and bottom. */
-.sbt-cube { --s: 64px; width: var(--s); height: var(--s); perspective: calc(var(--s) * 6); flex: none; display: inline-block; }
-.sbt-cube .c { display: block; position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: sbt-spin 6s linear infinite; }
-.sbt-cube .c i { display: block; position: absolute; inset: 0; background: url(/assets/sbt.png) center / 100% 100% no-repeat; image-rendering: pixelated; backface-visibility: hidden; }
-.sbt-cube .c i:nth-child(1) { transform: translateZ(calc(var(--s) / 2)); }
-.sbt-cube .c i:nth-child(2) { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.82); }
-.sbt-cube .c i:nth-child(3) { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
-.sbt-cube .c i:nth-child(4) { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.82); }
-.sbt-cube .c i:nth-child(5) { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); background-image: url(/assets/sbt-top.png); filter: brightness(1.08); }
-.sbt-cube .c i:nth-child(6) { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); background-image: url(/assets/sbt-top.png); filter: brightness(0.6); }
-@keyframes sbt-spin { from { transform: rotateX(-24deg) rotateY(0deg); } to { transform: rotateX(-24deg) rotateY(360deg); } }
-@media (prefers-reduced-motion: reduce) { .sbt-cube .c { animation: none; transform: rotateX(-24deg) rotateY(-35deg); } }
+/* A floating, spinning Silver Coin: the coin face stacked in six layers to give it a ~2.5px pixel-art edge. */
+.sbt-cube { --s: 64px; --t: calc(var(--s) * 0.16); width: var(--s); height: var(--s); perspective: calc(var(--s) * 6); flex: none; display: inline-block; animation: coin-float 2.8s ease-in-out infinite; }
+.sbt-cube .c { display: block; position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: coin-spin 4.5s linear infinite; }
+.sbt-cube .c i { display: block; position: absolute; inset: 0; background: url(/assets/coin-silver.png) center / 100% 100% no-repeat; image-rendering: pixelated; }
+.sbt-cube .c i:nth-child(1) { transform: translateZ(calc(var(--t) / 2)); }
+.sbt-cube .c i:nth-child(2) { transform: translateZ(calc(var(--t) * 0.3)); filter: brightness(0.62) saturate(0.8); }
+.sbt-cube .c i:nth-child(3) { transform: translateZ(calc(var(--t) * 0.1)); filter: brightness(0.55) saturate(0.8); }
+.sbt-cube .c i:nth-child(4) { transform: translateZ(calc(var(--t) * -0.1)); filter: brightness(0.55) saturate(0.8); }
+.sbt-cube .c i:nth-child(5) { transform: translateZ(calc(var(--t) * -0.3)); filter: brightness(0.62) saturate(0.8); }
+.sbt-cube .c i:nth-child(6) { transform: translateZ(calc(var(--t) / -2)) rotateY(180deg); }
+@keyframes coin-spin { from { transform: rotateX(-12deg) rotateY(0deg); } to { transform: rotateX(-12deg) rotateY(360deg); } }
+@keyframes coin-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(calc(var(--s) * -0.08)); } }
+@media (prefers-reduced-motion: reduce) { .sbt-cube, .sbt-cube .c { animation: none; } .sbt-cube .c { transform: rotateX(-12deg) rotateY(-35deg); } }
