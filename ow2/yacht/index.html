@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menachem's Yacht · OceanWorld2</title>
+<meta name="description" content="Menachem's Yacht on OceanWorld2: Captain Menachem's stall, who holds the silver, and the animals on the islands.">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ow2.css?v=10">
+<style>
+  .hero img { width: min(460px, 86vw); }
+
+  /* who holds the silver */
+  .census { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; justify-content: center; border-color: #f5b82e; }
+  .donut { position: relative; width: 220px; height: 220px; flex: none; }
+  .donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .donut .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut .tot { font-family: 'Press Start 2P', monospace; color: #f5b82e; font-size: 17px; text-shadow: 2px 2px 0 var(--shadow); }
+  .donut .lbl-ico { width: 30px; height: 30px; image-rendering: pixelated; margin-top: 8px; }
+  .pie { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: none; }
+  .chests { display: flex; align-items: center; gap: 8px; font-size: 21px; color: var(--muted); }
+  .chests b { color: #f5b82e; font-family: 'Press Start 2P', monospace; font-size: 14px; }
+  .chests img { width: 48px; height: 27px; image-rendering: pixelated; }
+  .legend { flex: 1; min-width: 220px; }
+  #sbt-legend > div { display: flex; align-items: center; gap: 10px; padding: 2px 0; font-size: 21px; }
+  .legend i { width: 14px; height: 14px; flex: none; }
+  .legend .who { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend .val { color: #ffe9a0; white-space: nowrap; }
+  .more { display: inline-block; margin-top: 12px; font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--ink); text-decoration: none; }
+  .more:hover { color: #f5b82e; }
+
+  /* captain's stall */
+  .stall h3 { color: #1d9bf0; }
+  .stall .when { color: var(--muted); font-size: 20px; }
+  .trade { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-bottom: 1px dashed rgba(127,220,255,0.3); font-size: 22px; }
+  .trade .what { flex: 1; }
+  .trade .price { color: #ffe9a0; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+  .trade .price img { width: 18px; height: 18px; image-rendering: pixelated; }
+  .trade.out { opacity: .45; }
+  .tag { font-family: 'Press Start 2P', monospace; font-size: 9px; padding: 3px 6px; border: 2px solid; }
+  .tag.sell { color: #3fdc6a; } .tag.buy { color: #ffb84d; }
+
+  /* animals */
+  .beast { display: grid; grid-template-columns: 110px 1fr 90px; align-items: center; gap: 10px; padding: 3px 0; font-size: 21px; }
+  .beast .bar { height: 14px; background: rgba(0,0,0,0.35); border: 1px solid rgba(127,220,255,0.35); }
+  .beast .bar i { display: block; height: 100%; background: #3fdc6a; }
+  .beast.full .bar i { background: #ff5a5a; }
+  .beast .n { text-align: right; color: #ffe9a0; }
+</style>
+</head>
+<body>
+<canvas id="water" width="16" height="16"></canvas>
+<div class="shade"></div>
+
+<main>
+  <div class="topbar">
+    <a class="back" href="/">HOME</a>
+  </div>
+  <div class="copied" id="copied"></div>
+
+  <section class="hero">
+    <img src="/yacht.png" alt="Menachem's Yacht">
+    <div class="hero-text">
+      <h1>MENACHEM'S YACHT</h1>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>CAPTAIN MENACHEM'S STALL</h2>
+    <div class="panel stall">
+      <h3 id="stall-name">…</h3>
+      <div id="stall"></div>
+      <div class="when" id="stall-when"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>WHO HOLDS THE SILVER</h2>
+    <div class="panel census">
+      <div class="pie"><div class="donut"><svg viewBox="0 0 42 42" id="donut"></svg><div class="mid"><div class="tot" id="sbt-total">…</div><img class="lbl-ico" src="/assets/coin-silver.png" alt="silver"></div></div><div class="chests" id="sbt-chests"></div></div>
+      <div class="legend"><div id="sbt-legend"></div><a class="more" href="/stats/">FULL STATS ▸</a></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>ANIMALS ON THE ISLANDS</h2>
+    <div class="panel" id="beasts"></div>
+  </section>
+</main>
+
+<script src="/assets/ow2.js?v=7"></script>
+<script>
+const fmt = n => Number(n).toLocaleString('en-GB');
+const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* ---- who holds the silver (moved from the homepage) ---- */
+(function () {
+  const COLORS = ['#f5b82e', '#ff7a45', '#3fdc6a', '#e85d9a', '#a07cff', '#2ec4b6', '#ffd166'];
+  fetch('/data/census.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    document.getElementById('sbt-total').textContent = fmt(d.total);
+    const dc = Math.floor(d.total / 3456);
+    document.getElementById('sbt-chests').innerHTML = '<b>' + fmt(dc) + '</b> <span>×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of silver">';
+    const slices = [{ name: 'Menachem Funds', value: d.menachem, color: '#1d9bf0' }];
+    d.holders.slice(0, COLORS.length).forEach((h, i) => slices.push({ name: h.name, value: h.value, color: COLORS[i] }));
+    const rest = d.holders.slice(COLORS.length).reduce((a, h) => a + h.value, 0);
+    if (rest > 0) slices.push({ name: 'Everyone else', value: rest, color: '#6b7a99' });
+    const sum = slices.reduce((a, s) => a + s.value, 0) || 1, C = 2 * Math.PI * 15.915;
+    let off = 0, svg = '<circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>';
+    slices.forEach(s => {
+      const len = s.value / sum * C; if (len <= 0) return;
+      svg += '<circle cx="21" cy="21" r="15.915" fill="none" stroke="' + s.color + '" stroke-width="6" stroke-dasharray="' + len + ' ' + (C - len) + '" stroke-dashoffset="' + (-off) + '"/>';
+      off += len;
+    });
+    document.getElementById('donut').innerHTML = svg;
+    document.getElementById('sbt-legend').innerHTML = slices.map(s =>
+      '<div><i style="background:' + s.color + '"></i><span class="who">' + esc(s.name) + '</span><span class="val">' + fmt(s.value) + '</span></div>').join('');
+  }).catch(() => { document.getElementById('sbt-total').textContent = '—'; });
+})();
+
+/* ---- the captain's stall and the animal caps (yacht.json, written by the server every minute) ---- */
+(function () {
+  const coins = v => {
+    const g = Math.floor(v / 576), s = v % 576, out = [];
+    if (g) out.push(fmt(g) + ' <img src="/assets/coin-gold.png" alt="gold">');
+    if (s || !g) out.push(fmt(s) + ' <img src="/assets/coin-silver.png" alt="silver">');
+    return out.join(' ');
+  };
+  const NAMES = { COW: 'Cows', SHEEP: 'Sheep', PIG: 'Pigs', HORSE: 'Horses', CAT: 'Cats', WOLF: 'Wolves', NAUTILUS: 'Nautilus', PARROT: 'Parrots', VILLAGER: 'Villagers' };
+  fetch('/data/yacht.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
+    const st = d.stall || {};
+    document.getElementById('stall-name').textContent = (st.name || 'Closed').toUpperCase();
+    document.getElementById('stall').innerHTML = (st.trades || []).map(t =>
+      '<div class="trade' + (t.left === 0 ? ' out' : '') + '"><span class="tag ' + (t.buys ? 'buy' : 'sell') + '">' + (t.buys ? 'BUYING' : 'SELLING') + '</span>' +
+      '<span class="what">' + fmt(t.amount) + ' × ' + esc(t.item) + (t.left === 0 ? ' (sold out)' : '') + '</span>' +
+      '<span class="price">' + coins(t.silver) + '</span></div>').join('') || '<div class="when">Nothing on sale right now.</div>';
+    if (st.next) {
+      const mins = Math.max(0, Math.round((new Date(st.next) - Date.now()) / 60000));
+      document.getElementById('stall-when').textContent = 'New stock in ' + mins + ' min';
+    }
+    const caps = d.caps || {};
+    document.getElementById('beasts').innerHTML = Object.keys(NAMES).filter(k => caps[k]).map(k => {
+      const c = caps[k], pct = Math.min(100, c.count / c.cap * 100);
+      return '<div class="beast' + (c.count >= c.cap ? ' full' : '') + '"><span>' + NAMES[k] + '</span><span class="bar"><i style="width:' + pct + '%"></i></span><span class="n">' + c.count + '/' + c.cap + '</span></div>';
+    }).join('');
+  }).catch(() => {
+    document.getElementById('stall-name').textContent = 'OPENING SOON';
+    document.getElementById('beasts').innerHTML = '<div class="when">Opening soon.</div>';
+  });
+})();
+</script>
+</body>
+</html>

@@ -76,8 +76,10 @@
 
   /* Islands */
   .islands {
-    display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; width: 100%;
+    display: grid; grid-template-columns: repeat(2, min(420px, 44vw)); gap: 6px 28px; justify-content: center; width: 100%;
   }
+  .island.yacht { grid-column: 2; }
+  .island.yacht img { width: 92%; }
   .island {
     display: flex; flex-direction: column; align-items: center; gap: 6px;
     text-decoration: none; color: var(--ink);
@@ -171,6 +173,8 @@
   @media (max-width: 520px) {
     .widgets { grid-template-columns: 1fr; }
     .island { width: 100%; }
+    .islands { grid-template-columns: 1fr; }
+    .island.yacht { grid-column: 1; }
   }
 </style>
 </head>
@@ -195,12 +199,9 @@
       <img src="/stratis.png?v=2" alt="Stratis">
       <span>Stratis</span>
     </a>
-  </section>
-
-  <section class="census">
-    <a href="/stats/">
-      <div class="pie"><div class="donut"><svg viewBox="0 0 42 42" id="donut"></svg><div class="mid"><div class="tot" id="sbt-total">…</div><img class="lbl-ico" src="/assets/coin-silver.png" alt="silver"></div></div><div class="chests" id="sbt-chests"></div></div>
-      <div class="legend"><h2>WHO HOLDS THE SILVER</h2><div id="sbt-legend"></div><div class="go">FULL STATS ▸</div></div>
+    <a class="island yacht" href="/yacht/">
+      <img src="/yacht.png" alt="Menachem's Yacht">
+      <span>Menachem's Yacht</span>
     </a>
   </section>
 
@@ -319,33 +320,6 @@ fetch('https://api.mcsrvstat.us/3/oceanworld2.com')
       p.textContent = j.players.online + ' / ' + j.players.max + ' players';
     } else s.innerHTML = '<span class="dot off"></span>Offline';
   }).catch(() => { document.getElementById('sv-status').textContent = ''; });
-/* ---- silver in circulation ---- */
-(function () {
-  const COLORS = ['#f5b82e', '#ff7a45', '#3fdc6a', '#e85d9a', '#a07cff', '#2ec4b6', '#ffd166'];
-  const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  fetch('/data/census.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
-    document.getElementById('sbt-total').textContent = fmt(d.total);
-    const dc = Math.floor(d.total / 3456);
-    document.getElementById('sbt-chests').innerHTML = '<b>' + fmt(dc) + '</b> <span class="x">×</span> <img src="/assets/dchest.png" alt="full double chests" title="full double chests of silver">';
-    const slices = [{ name: 'Menachem Funds', value: d.menachem, color: '#1d9bf0' }];
-    const top = d.holders.slice(0, COLORS.length);
-    top.forEach((h, i) => slices.push({ name: h.name, value: h.value, color: COLORS[i] }));
-    const rest = d.holders.slice(COLORS.length).reduce((a, h) => a + h.value, 0);
-    if (rest > 0) slices.push({ name: 'Everyone else', value: rest, color: '#6b7a99' });
-    const sum = slices.reduce((a, s) => a + s.value, 0) || 1;
-    const C = 2 * Math.PI * 15.915;
-    let off = 0, svg = '<circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>';
-    slices.forEach(s => {
-      const len = s.value / sum * C;
-      if (len <= 0) return;
-      svg += '<circle cx="21" cy="21" r="15.915" fill="none" stroke="' + s.color + '" stroke-width="6" stroke-dasharray="' + len + ' ' + (C - len) + '" stroke-dashoffset="' + (-off) + '"/>';
-      off += len;
-    });
-    document.getElementById('donut').innerHTML = svg;
-    document.getElementById('sbt-legend').innerHTML = slices.map(s =>
-      '<div><i style="background:' + s.color + '"></i><span class="who">' + esc(s.name) + '</span><span class="val">' + fmt(s.value) + '</span></div>').join('');
-  }).catch(() => { document.getElementById('sbt-total').textContent = '—'; });
-})();
 </script>
 <script src="/assets/dassom-art.js?v=2"></script>
 <script src="/assets/phone.js?v=3" data-href="/dassom/" data-label="DASSOM"></script>
