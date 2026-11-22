@@ -40,6 +40,7 @@
   .beast-key { display: flex; gap: 22px; justify-content: flex-end; margin-top: 10px; font-size: 19px; color: var(--muted); }
   .beast-key i, .beast-key b { display: inline-block; width: 12px; height: 12px; margin-right: 8px; background: #3fdc6a; }
   .beast-key b { background: #f5b82e; }
+  .beast-key u { display: inline-block; width: 12px; height: 12px; margin-right: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(127,220,255,0.35); }
   .raids img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border: 3px solid var(--edge); box-shadow: 4px 4px 0 var(--shadow); display: block; }
   .tiers { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 10px 0 12px; color: var(--muted); font-size: 22px; }
   .tiers img { width: 48px; height: 48px; image-rendering: pixelated; }
@@ -309,7 +310,7 @@
   <section class="block" id="caps">
     <h2>MOB CAPS</h2>
     <div class="panel">
-      <p>Cows, sheep, pigs, chickens, horses, villagers and other animals are capped across the whole server. The islands are full: Menachem keeps the rest in his private zoo.</p>
+      <p>Cows, sheep, pigs, chickens, horses, villagers and other animals are capped across the whole server. The islands are full: Menachem keeps the rest in his private zoo. Pigs are the exception and can breed up to 100.</p>
       <p>Every capped animal inside a claim belongs to the claim owner. See them all in the mob book on the <a href="/yacht/">yacht page</a>.</p>
     </div>
     <div class="panel" id="beasts"></div>
@@ -360,7 +361,7 @@ fetch('/data/stats.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
     : '<tr><td colspan="2">No claims yet</td></tr>';
 }).catch(() => { document.getElementById('top-land').innerHTML = '<tr><td colspan="2">Unavailable</td></tr>'; });
 </script>
-<script src="/assets/beasts.js?v=1"></script>
+<script src="/assets/beasts.js?v=2"></script>
 <script>fetch('/data/yacht.json', { cache: 'no-store' }).then(r => r.json()).then(d => OW2Beasts(document.getElementById('beasts'), d.caps || {})).catch(() => { document.getElementById('beasts').innerHTML = '<div class="when">Opening soon.</div>'; });</script>
 </body>
 </html>

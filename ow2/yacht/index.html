@@ -55,6 +55,7 @@
   .beast-key { display: flex; gap: 22px; justify-content: flex-end; margin-top: 10px; font-size: 19px; color: var(--muted); }
   .beast-key i, .beast-key b { display: inline-block; width: 12px; height: 12px; margin-right: 8px; background: #3fdc6a; }
   .beast-key b { background: #f5b82e; }
+  .beast-key u { display: inline-block; width: 12px; height: 12px; margin-right: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(127,220,255,0.35); }
 
   /* mob book */
   .book-h { display: flex; align-items: center; gap: 14px; }
@@ -128,7 +129,7 @@
 </div>
 
 <script src="/assets/ow2.js?v=7"></script>
-<script src="/assets/beasts.js?v=1"></script>
+<script src="/assets/beasts.js?v=2"></script>
 <script>
 const fmt = n => Number(n).toLocaleString('en-GB');
 const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
