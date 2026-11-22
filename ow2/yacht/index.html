@@ -163,7 +163,7 @@ let book = null;
     tabs.innerHTML = KINDS.map(([k, n]) => '<button data-k="' + k + '"' + (k === kind ? ' class="on"' : '') + '>' + n.toUpperCase() + '</button>').join('');
     if (!book) { list.innerHTML = '<div class="mob">The book opens soon.</div>'; return; }
     const rows = book.filter(m => kind === 'ALL' || m.t === kind).sort((a, b) => (b.alive - a.alive) || a.t.localeCompare(b.t) || a.n - b.n);
-    list.innerHTML = rows.map(m => '<div class="mob' + (m.alive ? '' : ' gone') + '"><i title="' + (m.alive ? 'Alive' : 'Missing') + '"></i><span>' + esc(m.name) + (m.alive ? '' : ' (missing)') + '</span><span class="by">' + (m.by ? esc(m.by) + ' · ' + ago(m.at) : '') + '</span></div>').join('') || '<div class="mob">None yet.</div>';
+    list.innerHTML = rows.map(m => '<div class="mob' + (m.alive ? '' : ' gone') + '"><i title="' + (m.alive ? 'Alive' : 'Missing') + '"></i><span>' + esc(m.name) + (m.alive ? '' : ' (missing)') + '</span><span class="by">' + (m.owner ? 'Owner: ' + esc(m.owner) + (m.by ? ' - ' : '') : '') + (m.by ? 'clicked by ' + esc(m.by) + ' ' + ago(m.at) : '') + '</span></div>').join('') || '<div class="mob">None yet.</div>';
   }
   tabs.addEventListener('click', e => { const k = e.target.dataset && e.target.dataset.k; if (k) { kind = k; draw(); } });
   document.getElementById('book-open').addEventListener('click', () => { wrap.hidden = false; draw(); });
