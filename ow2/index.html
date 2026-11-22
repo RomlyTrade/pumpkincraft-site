@@ -74,12 +74,18 @@
     height: 12px; text-shadow: 2px 2px 0 var(--shadow);
   }
 
+  /* How to play */
+  .h2p { display: block; line-height: 0; margin: -8px 0 -6px; }
+  .h2p img { width: min(460px, 82vw); height: auto; image-rendering: pixelated; filter: drop-shadow(4px 4px 0 var(--shadow)); transition: transform .18s ease, filter .18s ease; }
+  .h2p:hover img, .h2p:focus-visible img { transform: translateY(-4px) scale(1.04); filter: drop-shadow(6px 8px 0 var(--shadow)) brightness(1.08); }
+  .h2p:active img { transform: translate(2px, 2px); }
+
   /* Islands */
   .islands {
     display: grid; grid-template-columns: repeat(2, min(420px, 44vw)); gap: 6px 28px; justify-content: center; width: 100%;
   }
   .island.yacht { grid-column: 2; }
-  .island.yacht img { width: 92%; }
+  .island.yacht img { width: 55%; }
   .island {
     display: flex; flex-direction: column; align-items: center; gap: 6px;
     text-decoration: none; color: var(--ink);
@@ -189,6 +195,8 @@
     <div class="ip-line"><span class="ip-label">BEDROCK:</span> <button class="ip-btn" data-copy="play.oceanworld2.com">play.oceanworld2.com</button> <span class="ip-label">PORT:</span> <button class="ip-btn" data-copy="19132">19132</button></div>
     <div class="copied" id="copied"></div>
   </section>
+
+  <a class="h2p" href="/how2play/"><img src="/assets/howtoplay.png" alt="How to play" width="832" height="92"></a>
 
   <section class="islands">
     <a class="island" href="/altis">
