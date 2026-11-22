@@ -31,6 +31,8 @@
   .earn h3 { font-size: 13px; }
   .earn .ico { font-size: 34px; line-height: 1; margin-bottom: 6px; }
   .coins-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .tiers { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 10px 0 12px; color: var(--muted); font-size: 22px; }
+  .tiers img { width: 48px; height: 48px; image-rendering: pixelated; }
   .coins-row img { width: 40px; height: 40px; image-rendering: pixelated; }
   .safe .diagram { margin: 0; }
   @media (max-width: 800px) { .cycle { grid-template-columns: 1fr; } .cycle .mid .arrow { display: inline-block; transform: rotate(90deg); } }
@@ -156,7 +158,7 @@
     </div>
 
     <div class="panel">
-      <h3>BIG CLAIMS PAY MORE</h3>
+      <h3>BIG CLAIMS COST MORE</h3>
       <div class="tablewrap"><table>
         <tr><th>CUBES</th><th class="num">RENT</th></tr>
         <tr><td>1 – 10</td><td class="num">× 1</td></tr>
@@ -171,6 +173,7 @@
       <h3>TOLL CUBES</h3>
       <p>Your claim unlocks one toll cube at 10 cubes, another at 25 and another at 50. Stand in a cube and type <code>/toll here</code> to make it a toll cube, and set the price in your claim barrel or with <code>/toll &lt;silver&gt;</code>.</p>
       <p>Non-members can't walk, ride or teleport into a toll cube until they pay. Then they're in for 30 minutes. Tolls collect in the barrel's toll box, and each toll cube costs 8 silver a day from it.</p>
+      <figure class="diagram"><svg viewBox="0 0 128 44" role="img" aria-label="A toll cube: one player paying silver to walk in, the silver going to the claim owner, and another player with no silver stuck outside" shape-rendering="crispEdges"><style>.lb{font-family:'Press Start 2P',monospace;font-size:6.4px;fill:#fff;paint-order:stroke;stroke:#020818;stroke-width:1.6px}.lb.g{fill:#ffe9a0}.lb.r{fill:#ff8080}.lb.k{fill:#8fffa8}.lb.n{font-size:9px}</style><rect x="0" y="0" width="128" height="32" fill="#7ea8ff"/><rect x="0" y="32" width="128" height="1" fill="#5daa3a"/><rect x="0" y="33" width="128" height="4" fill="#8a5a33"/><rect x="0" y="37" width="128" height="20" fill="#7d7d7d"/><g fill="#6b6b6b"><rect x="10" y="40" width="2" height="1"/><rect x="70" y="42" width="2" height="1"/><rect x="110" y="39" width="2" height="1"/></g><rect x="48" y="9" width="64" height="23" fill="#ffd65a" fill-opacity="0.16"/><rect x="48" y="9" width="64" height="23" fill="none" stroke="#ffd65a" stroke-width="0.6" stroke-dasharray="1.6 1"/><text class="lb g" x="160" y="14" text-anchor="middle" transform="scale(.5)">TOLL CUBE</text><g transform="translate(26,24.0) scale(1.0)"><rect x="0" y="0" width="4" height="1" fill="#2b1d10"/><rect x="0" y="1" width="4" height="2" fill="#c8946a"/><rect x="1" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="2.4" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="-1" y="3" width="6" height="3" fill="#c0392b"/><rect x="0" y="6" width="4" height="2" fill="#333"/></g><image href="/assets/coin-silver.png" x="24.5" y="15" width="5" height="5" style="image-rendering:pixelated"/><text class="lb n r" x="62" y="38" transform="scale(.5)">0</text><text class="lb r" x="56" y="80" text-anchor="middle" transform="scale(.5)">NO SILVER</text><g stroke="#ff8080" stroke-width="0.9"><line x1="38" y1="21" x2="42" y2="25"/><line x1="42" y1="21" x2="38" y2="25"/></g><g transform="translate(56,24.0) scale(1.0)"><rect x="0" y="0" width="4" height="1" fill="#4a2f1a"/><rect x="0" y="1" width="4" height="2" fill="#c8946a"/><rect x="1" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="2.4" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="-1" y="3" width="6" height="3" fill="#2fb3b3"/><rect x="0" y="6" width="4" height="2" fill="#3a3aa0"/></g><image href="/assets/coin-silver.png" x="55.5" y="15" width="5" height="5" style="image-rendering:pixelated"/><text class="lb k" x="116" y="80" text-anchor="middle" transform="scale(.5)">PAID</text><g transform="translate(94,24.0) scale(1.0)"><rect x="0" y="0" width="4" height="1" fill="#e0b050"/><rect x="0" y="1" width="4" height="2" fill="#d8a77a"/><rect x="1" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="2.4" y="1.5" width="0.6" height="0.6" fill="#222"/><rect x="-1" y="3" width="6" height="3" fill="#7b3fbf"/><rect x="0" y="6" width="4" height="2" fill="#2a2a5a"/></g><g fill="#f5b82e"><rect x="94" y="22.2" width="4" height="0.8"/><rect x="94" y="21.4" width="0.8" height="0.8"/><rect x="95.6" y="21.4" width="0.8" height="0.8"/><rect x="97.2" y="21.4" width="0.8" height="0.8"/></g><rect x="102" y="26" width="6" height="6" fill="#8a5a33"/><rect x="102" y="27.5" width="6" height="0.7" fill="#5a3a1f"/><rect x="102" y="30" width="6" height="0.7" fill="#5a3a1f"/><rect x="104" y="26" width="2" height="0.8" fill="#3a2410"/><text class="lb g" x="192" y="80" text-anchor="middle" transform="scale(.5)">OWNER</text><path d="M61 16 Q78 9 93 19.5" fill="none" stroke="#f5b82e" stroke-width="0.9" stroke-dasharray="2 1" shape-rendering="auto"/><path d="M94.8 21.2 L90.8 20.2 L93.4 17.2 Z" fill="#f5b82e" shape-rendering="auto"/></svg></figure>
     </div>
 
     <div class="panel">
@@ -197,7 +200,7 @@
 
   <section class="block" id="coins">
     <h2>COINS</h2>
-    <div class="trio"><a href="/sbt/" aria-label="Silver Coins">
+    <div class="trio"><a href="#coins" aria-label="Silver Coins">
       <img class="c1" src="/assets/sbt-3d.png" alt="Silver Coin">
       <img class="c2" src="/assets/row-3d.png" alt="Gold Coin">
       <img class="c3" src="/assets/shuper-3d.png" alt="Platinum Coin">
@@ -209,6 +212,7 @@
         <tr><td><img src="/assets/coin-gold.png" alt="" style="width:36px;image-rendering:pixelated"></td><td><b>Gold Coin</b> — 576 silver (one inventory row).</td></tr>
         <tr><td><img src="/assets/shuper.png?v=3" alt="" style="width:36px;image-rendering:pixelated"></td><td><b>Platinum Coin</b> — 64 gold (36,864 silver).</td></tr>
       </table></div>
+      <p style="margin-top:10px">Coins look like candles now. Any old pumpkin coins in your chests have already been swapped over.</p>
     </div>
     <div class="panel">
       <h3>KEEP YOUR SILVER SAFE</h3>
@@ -222,10 +226,10 @@
     </div>
     <div class="panel">
       <h3>THE COIN FURNACE</h3>
-      <p>Right-click a blast furnace to change coins up or down a tier: 9 stacks of silver make 1 gold, 1 stack of gold makes 1 platinum, and back again. Gold and platinum pay rent, shops, plots and Menachem at full value, with change in silver.</p>
-      <p>Coins look like candles now. Any old pumpkin coins in your chests have already been swapped over.</p>
+      <p>Use the coin furnace to compact your coins up a tier.</p>
+      <div class="tiers"><img src="/assets/coin-silver.png" alt="Silver"><span>▸</span><img src="/assets/coin-gold.png" alt="Gold"><span>▸</span><img src="/assets/shuper.png?v=3" alt="Platinum"></div>
+      <p>Upgrading and downgrading costs fuel.</p>
       <img src="/assets/coin-furnace.png" alt="The Coin Furnace" style="width:100%;max-width:520px;image-rendering:pixelated;border:2px solid #3a4a7a;display:block;margin:12px auto 0">
-      <a class="go" href="/sbt/">EVERY KIND OF COIN ▸</a>
     </div>
   </section>
 
