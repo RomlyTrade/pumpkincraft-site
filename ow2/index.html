@@ -86,6 +86,11 @@
   }
   .island.yacht { grid-column: 2; }
   .island.yacht img { width: 55%; }
+  .yacht3d { width: 100%; aspect-ratio: 2 / 1; position: relative; }
+  .yacht3d canvas { width: 100% !important; height: 100% !important; display: block; filter: drop-shadow(0 12px 14px rgba(0,0,0,0.45)); }
+  .yacht3d > img { position: absolute; inset: 0; margin: auto; width: 55%; height: auto; }
+  .yacht3d.ready > img { display: none; }
+  .island.yacht:hover .yacht3d img, .island.yacht:hover .yacht3d canvas { transform: none; }
   .island {
     display: flex; flex-direction: column; align-items: center; gap: 6px;
     text-decoration: none; color: var(--ink);
@@ -208,7 +213,7 @@
       <span>Stratis</span>
     </a>
     <a class="island yacht" href="/yacht/">
-      <img src="/yacht.png" alt="Menachem's Yacht">
+      <div class="yacht3d" id="yacht3d" role="img" aria-label="Menachem's Yacht, a 3D model"><img src="/yacht.png" alt=""></div>
       <span>Menachem's Yacht</span>
     </a>
   </section>
@@ -331,5 +336,6 @@ fetch('https://api.mcsrvstat.us/3/oceanworld2.com')
 </script>
 <script src="/assets/dassom-art.js?v=2"></script>
 <script src="/assets/phone.js?v=3" data-href="/dassom/" data-label="DASSOM"></script>
+<script type="module" src="/assets/yacht3d.js"></script>
 </body>
 </html>
