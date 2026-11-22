@@ -31,6 +31,16 @@
   .earn h3 { font-size: 13px; }
   .earn .ico { font-size: 34px; line-height: 1; margin-bottom: 6px; }
   .coins-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .beast { display: grid; grid-template-columns: 110px 1fr auto; align-items: center; gap: 10px; padding: 3px 0; font-size: 21px; }
+  .beast .n { white-space: nowrap; }
+  .beast .bar { height: 14px; display: flex; background: rgba(0,0,0,0.35); border: 1px solid rgba(127,220,255,0.35); }
+  .beast .bar i { display: block; height: 100%; background: #3fdc6a; }
+  .beast .bar b { display: block; height: 100%; background: #f5b82e; }
+  .beast .n { text-align: right; color: #ffe9a0; }
+  .beast-key { display: flex; gap: 22px; justify-content: flex-end; margin-top: 10px; font-size: 19px; color: var(--muted); }
+  .beast-key i, .beast-key b { display: inline-block; width: 12px; height: 12px; margin-right: 8px; background: #3fdc6a; }
+  .beast-key b { background: #f5b82e; }
+  .raids img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border: 3px solid var(--edge); box-shadow: 4px 4px 0 var(--shadow); display: block; }
   .tiers { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 10px 0 12px; color: var(--muted); font-size: 22px; }
   .tiers img { width: 48px; height: 48px; image-rendering: pixelated; }
   .coins-row img { width: 40px; height: 40px; image-rendering: pixelated; }
@@ -50,7 +60,7 @@
   <h1 class="h2p-title"><img src="/assets/howtoplay.png" alt="How to play" width="832" height="92"></h1>
 
   <nav class="jump">
-    <a href="#start">START</a><a href="#claiming">CLAIMING</a><a href="#coins">COINS</a><a href="#menachem">MENACHEM</a><a href="#money">MAKING MONEY</a><a href="#cards">MOB CARDS</a><a href="#raids">RAID SITES</a><a href="#voice">VOICE CHAT</a>
+    <a href="#start">START</a><a href="#claiming">CLAIMING</a><a href="#coins">COINS</a><a href="#menachem">MENACHEM</a><a href="#money">MAKING MONEY</a><a href="#cards">MOB CARDS</a><a href="#caps">MOB CAPS</a><a href="#raids">RAID SITES</a><a href="#voice">VOICE CHAT</a>
   </nav>
 
   <section class="block" id="start">
@@ -241,9 +251,9 @@
         <div class="side">
           <h3>YOU PAY MENACHEM</h3>
           <ul>
-            <li>Claim rent and Stratis plots</li>
-            <li>Boss summons and <code>/drown</code></li>
-            <li>Anything you buy from him</li>
+            <li>Rent</li>
+            <li>Using island features</li>
+            <li>Summoning bosses</li>
           </ul>
         </div>
         <div class="mid"><img src="/yacht.png" alt="Menachem's Yacht"><span class="arrow">◀ ▶</span><br>MENACHEM'S<br>FUNDS</div>
@@ -257,20 +267,6 @@
         </div>
       </div>
     </div>
-    <div class="grid2">
-      <div class="panel">
-        <h3>TRAVELLING MENACHEM</h3>
-        <p>Every so often Menachem turns up next to a player for about ten minutes with a random set of trades, buying and selling. Grab him while he's there.</p>
-      </div>
-      <div class="panel">
-        <h3>CAPTAIN MENACHEM</h3>
-        <p>Always on his yacht, south of Altis and Stratis. His stall changes every hour and some trades have a daily limit.</p>
-        <a class="go" href="/yacht/">WHAT'S ON THE STALL ▸</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p>See how much silver Menachem holds and who has the rest on the <a href="/yacht/">yacht page</a>.</p>
-    </div>
   </section>
 
   <section class="block" id="money">
@@ -283,12 +279,11 @@
       </div>
       <div class="panel">
         <h3>FARMING</h3>
-        <p>Grow, breed and mob-farm on your base or rent a plot on <a href="/stratis/">Stratis</a>, the only island where auto-farms work. Then sell what you make to players or Menachem.</p>
-        <p>Pumpkins and melons are normal crops again. The seed shop is closed: craft a pumpkin into 4 seeds instead.</p>
+        <p>Producing the goods that Menachem or other players buy.</p>
         <a class="go" href="/stratis/">STRATIS PLOTS ▸</a>
       </div>
       <div class="panel">
-        <h3>SELLING</h3>
+        <h3>SHOP OWNING</h3>
         <p>Sell mob drops, dirt, cobble and more to Menachem when he visits or on his yacht. Or open your own shop: hold the item, look at a chest and type <code>/shop create &lt;price&gt;</code>.</p>
       </div>
     </div>
@@ -298,7 +293,7 @@
     <h2>MOB CARDS</h2>
     <div class="cards">
       <div class="panel">
-        <p>Capped animals and villagers can be picked up and carried as a trading card. Sneak and right-click one with an empty hand.</p>
+        <p>Animals and villagers can be picked up and carried as a trading card. Sneak and right-click one with an empty hand.</p>
         <p>The card shows the mob's name, age in days and how far it has walked. Villagers also show their level and how much silver they've traded.</p>
         <ul>
           <li>You can only hold one card at a time.</li>
@@ -309,11 +304,15 @@
       </div>
       <img class="card-img" src="/assets/mob-card.png" alt="A villager's trading card" width="512" height="512">
     </div>
+  </section>
+
+  <section class="block" id="caps">
+    <h2>MOB CAPS</h2>
     <div class="panel">
-      <h3>MOB CAPS</h3>
-      <p>Horses, cows, sheep, villagers and other mobs are capped across the whole server. When a kind is full, no more can be bred or spawned until one dies. Every capped mob inside a claim belongs to the claim owner.</p>
-      <p>See every capped mob and its owner in the mob book on the <a href="/yacht/">yacht page</a>.</p>
+      <p>Cows, sheep, pigs, chickens, horses, villagers and other animals are capped across the whole server. The islands are full: Menachem keeps the rest in his private zoo.</p>
+      <p>Every capped animal inside a claim belongs to the claim owner. See them all in the mob book on the <a href="/yacht/">yacht page</a>.</p>
     </div>
+    <div class="panel" id="beasts"></div>
   </section>
 
   <section class="block" id="raids">
@@ -321,6 +320,11 @@
     <div class="panel">
       <p>Raid sites are public structures packed with loot. Anyone can raid them.</p>
       <p>Every Sunday at 06:00 GMT each site is wiped and rebuilt as a completely different structure, with fresh loot. Bastions now include the main treasure room.</p>
+    </div>
+    <div class="grid3 raids">
+      <img src="/assets/raid-bastion.jpg" alt="A bastion raid site" loading="lazy">
+      <img src="/assets/raid-fortress.jpg" alt="A nether fortress raid site" loading="lazy">
+      <img src="/assets/raid-monument.jpg" alt="An ocean monument raid site" loading="lazy">
     </div>
   </section>
 
@@ -334,10 +338,6 @@
         <li>Send Menachem a direct message on Discord: <code>link</code> and your code.</li>
         <li>Walk up to someone. Menachem puts players who are close together in the same voice channel.</li>
       </ol>
-    </div>
-    <div class="panel">
-      <h3>SCREENSHOTS</h3>
-      <p>Post your best shots in <b>#screenshots</b> on Discord and they show up on the <a href="/altis/">Altis page</a>.</p>
     </div>
   </section>
 </main>
@@ -360,5 +360,7 @@ fetch('/data/stats.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
     : '<tr><td colspan="2">No claims yet</td></tr>';
 }).catch(() => { document.getElementById('top-land').innerHTML = '<tr><td colspan="2">Unavailable</td></tr>'; });
 </script>
+<script src="/assets/beasts.js?v=1"></script>
+<script>fetch('/data/yacht.json', { cache: 'no-store' }).then(r => r.json()).then(d => OW2Beasts(document.getElementById('beasts'), d.caps || {})).catch(() => { document.getElementById('beasts').innerHTML = '<div class="when">Opening soon.</div>'; });</script>
 </body>
 </html>
