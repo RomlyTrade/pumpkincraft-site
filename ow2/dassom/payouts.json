@@ -10,5 +10,11 @@
     "to": ".smoeres",
     "amount": 1152,
     "for": "Contract: Triple Whammy"
+  },
+  {
+    "date": "2026-11-22T17:05:00Z",
+    "to": "couriertweek",
+    "amount": 0,
+    "for": "Contract: clear and restore (4 gold paid with /mpay)"
   }
 ]
