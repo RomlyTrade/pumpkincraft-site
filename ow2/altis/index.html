@@ -172,8 +172,9 @@ fetch('/data/shots.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
     shots.slice(shown, shown + 12).forEach(s => {
       const f = document.createElement('figure');
       const day = new Date(s.at); const when = isNaN(day) ? '' : day.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-      f.innerHTML = '<img loading="lazy" src="/data/' + esc(s.img) + '" alt="' + esc(s.text || 'Screenshot by ' + s.by) + '"' + (s.w ? ' width="' + s.w + '" height="' + s.h + '"' : '') + '><figcaption><b>' + esc(s.by) + '</b><span>' + when + '</span></figcaption>';
-      f.onclick = () => { lb.querySelector('img').src = '/data/' + s.img; lb.classList.add('open'); };
+      const src = s.src || '/data/' + s.img;
+      f.innerHTML = '<img loading="lazy" src="' + esc(src) + '" alt="' + esc(s.text || 'Screenshot by ' + s.by) + '"' + (s.w ? ' width="' + s.w + '" height="' + s.h + '"' : '') + '><figcaption><b>' + esc(s.by) + '</b><span>' + when + '</span></figcaption>';
+      f.onclick = () => { lb.querySelector('img').src = src; lb.classList.add('open'); };
       box.appendChild(f);
     });
     shown += 12; more.hidden = shown >= shots.length;
