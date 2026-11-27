@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/assets/ow2.css?v=11">
 <style>.go-h2p{display:inline-block;margin-top:10px;font-family:'Press Start 2P',monospace;font-size:10px;color:var(--ink);text-decoration:none;border:2px solid var(--edge);padding:8px 10px}.go-h2p:hover{background:var(--panel-hi)}</style>
 <style>
+#live .boards{grid-template-columns:repeat(3,1fr)}
+@media (max-width:800px){#live .boards{grid-template-columns:1fr}}
 .board-shots{columns:3 260px;column-gap:12px}
 .board-shots figure{break-inside:avoid;margin:0 0 12px;background:var(--panel);border:3px solid var(--edge);box-shadow:4px 4px 0 var(--shadow);cursor:zoom-in}
 .board-shots img{width:100%;height:auto;display:block}
@@ -63,6 +65,7 @@
     <div class="boards">
       <div class="board"><h3>BIGGEST BASES</h3><ol id="b-bases"><li class="empty">Loading…</li></ol></div>
       <div class="board"><h3 id="shops-title">TOP SHOP EARNERS</h3><ol id="b-shops"><li class="empty">Loading…</li></ol></div>
+      <div class="board"><h3>MOST HOURS PLAYED</h3><ol id="b-play"><li class="empty">Loading…</li></ol></div>
     </div>
     <div class="updated" id="updated"></div>
   </section>
@@ -143,12 +146,13 @@ OW2.live().then(d => {
   const a = d.altis || {};
   OW2.board('b-bases', a.bases, 'cubes');
   OW2.board('b-shops', a.shops, 'silver');
+  OW2.board('b-play', a.playtime, 'h');
   const L = a.layers || {};
   let tot = 0, any = false;
   ['sky', 'sea', 'stone', 'deepslate'].forEach(k => { const el = document.getElementById('ly-' + k); if (el && L[k] != null) { el.textContent = OW2.fmt(L[k]); tot += L[k]; any = true; } });
   if (any) (document.getElementById('ly-total')||{}).textContent = OW2.fmt(tot);
   OW2.stamp(d);
-}).catch(() => { ['b-bases', 'b-shops'].forEach(id => OW2.board(id, [])); });
+}).catch(() => { ['b-bases', 'b-shops', 'b-play'].forEach(id => OW2.board(id, [])); });
 </script>
 <script>
 if (document.getElementById('top-land')) fetch('/data/stats.json', { cache: 'no-store' }).then(r => r.json()).then(d => {
